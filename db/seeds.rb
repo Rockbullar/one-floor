@@ -14,20 +14,28 @@ contract_arr = ["0x2bd60f290060451e3644a7559d520c2e9b32c7e9","0xbc4ca0eda7647a8a
 
 contract_arr.each do |contract|
   url = URI("https://api.opensea.io/api/v1/asset_contract/#{contract}")
-
   http = Net::HTTP.new(url.host, url.port)
   http.use_ssl = true
   request = Net::HTTP::Get.new(url)
   response = http.request(request)
   collection = JSON.parse(response.read_body)
-  Collection.new({
+  project = Collection.create!({
     name: collection["collection"]["name"],
     description: collection["collection"]["description"],
     slug: collection["collection"]["slug"],
-    twitter: collection["collection"]["twitter_username"],
+    twitter_username: collection["collection"]["twitter_username"],
     image_url: collection["collection"]["featured_image_url"],
     discord_url: collection["collection"]["discord_url"],
-    total_supply: collection["collection"]["total_supply"],
     contract_id: contract
   })
+
+  stats_url = URI("https://api.opensea.io/api/v1/collection/#{project.slug}/stats")
+  stats_http = Net::HTTP.new(stats_url.host, stats_url.port)
+  stats_http.use_ssl = true
+  stats_request = Net::HTTP::Get.new(stats_url)
+  stats_response = http.request(stats_request)
+  stats_collection = JSON.parse(stats_response.read_body)
+  project.total_supply = stats_collection["stats"]["total_supply"].to_i
+
+  project.save
 end
