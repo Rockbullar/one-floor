@@ -5,4 +5,30 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :nfts, through: :portfolio
   has_many :collections, through: :nfts
+
+  acts_as_favoritor
+
+  def watchlist
+    favorites.where(scope: :watchlist)
+  end
+
+  def watchlist_collections
+    favorites.where(scope: :watchlist, favoritable_type: :Collection)
+  end
+
+  def watchlist_nfts
+    favorites.where(scope: :watchlist, favoritable_type: :Nfts)
+  end
+
+  def portfolio
+    favorites.where(scope: :portfolio)
+  end
+
+  def add_to_watchlist(nft_or_collection)
+    favorite(nft_or_collection, scopes: :watchlist)
+  end
+
+  def add_to_portfolio(nft)
+    favorite(nft, scopes: :portfolio)
+  end
 end
