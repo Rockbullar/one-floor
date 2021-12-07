@@ -16,4 +16,8 @@ class PagesController < ApplicationController
       @gas_price = 'error'
     end
   end
+
+  def about
+
+  end
 end
