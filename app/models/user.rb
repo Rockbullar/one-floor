@@ -6,12 +6,29 @@ class User < ApplicationRecord
   has_many :nfts, through: :portfolio
   has_many :collections, through: :nfts
 
-  # def self.find_for_database_authentication(warden_conditions)
-  #   conditions = warden_conditions.dup
-  #   if login = conditions.delete(:login)
-  #     where(conditions.to_h).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
-  #   elsif conditions.has_key?(:wallet_id)
-  #     where(conditions.to_h).first
-  #   end
-  # end
+  acts_as_favoritor
+
+  def watchlist
+    favorites.where(scope: :watchlist)
+  end
+
+  def watchlist_collections
+    favorites.where(scope: :watchlist, favoritable_type: :Collection)
+  end
+
+  def watchlist_nfts
+    favorites.where(scope: :watchlist, favoritable_type: :Nfts)
+  end
+
+  def portfolio
+    favorites.where(scope: :portfolio)
+  end
+
+  def add_to_watchlist(nft_or_collection)
+    favorite(nft_or_collection, scopes: :watchlist)
+  end
+
+  def add_to_portfolio(nft)
+    favorite(nft, scopes: :portfolio)
+  end
 end
