@@ -1,15 +1,7 @@
-const ethereumButton = document.querySelector('.enableEthereumButton');
-const showAccount = document.querySelector('.showAccount');
+
 const deviseArea = document.querySelector('.devise');
 const walletInput = document.querySelector('#user_wallet_id')
-let currentAccount = null;
 
-async function getAccount() {
-
-  const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-  const account = accounts[0];
-  showAccount.innerHTML = account;
-}
 
 const handleAccountsChanged = (accounts) => {
   if (accounts.length === 0) {
@@ -20,7 +12,6 @@ const handleAccountsChanged = (accounts) => {
     walletInput.setAttribute('value', accounts[0])
   }
 }
-
 
 const connect = () => {
   ethereum
@@ -41,11 +32,6 @@ const initMetamask = () => {
   if (deviseArea) {
     connect();
   }
-
-
-  // ethereumButton.addEventListener('click', () => {
-  //   getAccount();
-  // });
 };
 
 export { initMetamask };
