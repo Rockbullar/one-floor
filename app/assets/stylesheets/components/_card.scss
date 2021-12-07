@@ -1,44 +1,35 @@
-.card {
+.nft-card {
   border-radius: 25px;
   border-width: 3px;
   border-color: #fff;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  border: 1px solid blue;
 }
-.card-body p {
-  margin-bottom: -20px;
-}
-.justify-content-between {
-  justify-content: space-around;
-  padding-right: 10px;
-  padding-top: 5px;
+
+.nft-name > p {
+  padding-bottom: 0;
 }
 
 .floor {
-  display: flex;
-  justify-content: start;
   color: black;
 }
 
 .graph {
-  display: flex;
-  justify-content: left;
   color: black;
 }
 
 .socials {
-  list-style-type: none;
+  display: flex;
+  flex-direction: column;
   text-decoration: none;
   font-size: 18px;
   color: black;
-  align-items: right;
   z-index: auto;
 }
 
 .avatar {
   vertical-align: middle;
-  width: 77px;
-  height: 77px;
+  width: 66px;
+  height: 66px;
   border-radius: 50%;
   background-color: black;
 }
