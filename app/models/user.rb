@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :nfts, through: :portfolio
   has_many :collections, through: :nfts
+  
+  acts_as_favoritor
 end
