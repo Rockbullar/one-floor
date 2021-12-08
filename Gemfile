@@ -67,3 +67,6 @@ gem 'dotenv-rails', groups: [:development, :test]
 
 # Install acts_as_favoritor gem to create portfolio and watchlist
 gem 'acts_as_favoritor'
+
+#For Twitter use
+gem 'typhoeus'

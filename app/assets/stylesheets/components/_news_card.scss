@@ -1,0 +1,25 @@
+.news-card {
+  border-radius: 25px;
+  border-width: 3px;
+  border-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.news-box {
+  flex-direction: column;
+}
+
+.news-tagline > p {
+  padding-bottom: 0;
+}
+
+.news-content {
+  color: black;
+}
+
+.news-image {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  background-color: black;
+}
