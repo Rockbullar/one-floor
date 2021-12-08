@@ -2,9 +2,11 @@
 @import "alert";
 @import "avatar";
 @import "navbar";
-@import "card";
+@import "individual_card";
+@import "collection_card";
+@import "news_card";
 
 body {
-  background-color: #2B2B2B;
+  background-color: #2b2b2b;
   color: white;
 }
