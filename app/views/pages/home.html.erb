@@ -1,4 +1,23 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
-<%= render "shared/nft_card" %>
+<%# render "shared/nft_card" %>
 <%= current_user.wallet_id %>
+
+<div>
+  <% if user_signed_in? %>
+    <% @portfolio.each do |nft| %>
+    <img src = "<%= nft.image_url %>">
+    <ul>
+      <li><%= nft.token_id %></li>
+      <li><%= nft.name %></li>
+      <li><%= nft.slug %></li>
+      <li><%= nft.twitter_url%></li>
+      <li><%= nft.discord_url%></li>
+      <li><%#= nft.floor_price%></li>
+      <li><%#= nft.highest_bid_eth_price%></li>
+    </ul>
+    <% end %>
+  <% else %>
+    <p>sign in beeetch</p>
+  <% end %>
+</div>
