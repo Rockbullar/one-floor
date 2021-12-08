@@ -1,1 +1,28 @@
 // Specific CSS for your home-page
+.nft-cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.a {
+  width: 21rem;
+}
+
+.black-card-bg {
+  border-radius: 25px;
+}
+
+.nav-item {
+  font-size: 10px;
+  display: flex;
+  background-color: #3b3b3b;
+  border-radius: 5px;
+  justify-items: left;
+}
+
+.nav-pills {
+  border-radius: 5px;
+  justify-content: flex-start;
+  gap: 2px;
+}
