@@ -43,7 +43,7 @@ def create_nft(collection, contract_id)
 
     nft.highest_bid_eth_price = bid_parsed["orders"].empty? ? 0 : bid_parsed["orders"][0]["current_price"].to_f #to update the itiration to compare largest bid later
     nft.save!
-
+    
   end
 end
 
