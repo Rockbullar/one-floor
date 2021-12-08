@@ -60,7 +60,30 @@
               <a href="#"> <%= render "shared/nft_card" %></a>
             </div>
           </div>
+          <blockquote class="twitter-tweet"><p lang="en" dir="ltr">My ape is feeling cold, where can he get a jumper?</p>&mdash; tanztanzfarben (@tanztanzfarben) <a href="https://twitter.com/tanztanzfarben/status/1468475458362642434?ref_src=twsrc%5Etfw">December 8, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
     </div>
   </div>
 </div>
+
+<div class="tweet-here-pls"></div>
+
+<script>
+  console.log('loading twitter!');
+
+  window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script>
