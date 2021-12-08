@@ -1,3 +1,25 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+<% current_user.watchlist_nfts.each do |nft| %>
+  <div class='bg-dark border rounded'>
+    <p>Nft</p>
+    <img src="<%= nft.collection.image_url%>" alt="">
+    <img src="" alt="">
+    <p><%=nft.collection.slug%> #<%= nft.token_id %></p>
+    <p>last sale price: <%= nft.last_sale_eth_price/(10**18) %> ETH</p>
+    <p>highest bid price: <%= nft.highest_bid_eth_price/(10**18) %> ETH</p>
+  </div>
+<% end %>
+<% current_user.watchlist_collections.each do |collection| %>
+  <div class='bg-secondary border rounded'>
+    <p>Collection</p>
+    <img src="<%= collection.image_url%>" alt="">
+    <p><%= collection.description%></p>
+  </div>
+<% end %>
+<br />
+<br />
+<br />
+<br />
+<br />
 <%= render "shared/nft_card" %>
