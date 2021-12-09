@@ -56,8 +56,35 @@ class Opensea
     end
   end
 
-  def self.update_single_asset()
+  def self.update_single_asset(contract_id, token_id)
 
+    url = URI("https://api.opensea.io/api/v1/asset/#{contract_id}/#{token_id}")
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    request = Net::HTTP::Get.new(url)
+    response = http.request(request)
+    parsed = JSON.parse(response.read_body)
+    if Nft.find_by({
+      contract_id: contract_id,
+      token_id: token_id,
+    })
+      nft = Nft.find_by({
+        contract_id: contract_id,
+        token_id: token_id,
+      })
+      # get highest bid from api call
+      highest_bid_eth_price = 0
+      unless parsed["orders"].empty?
+        order_arr = parsed["orders"]
+        highest_bid = order_arr.max_by do |bid|
+          bid["current_price"]
+        end
+        highest_bid_eth_price = highest_bid["current_price"].to_f
+      end
+      nft.update!({
+        highest_bid_eth_price: highest_bid_eth_price
+      })
+    end
   end
 
   private
