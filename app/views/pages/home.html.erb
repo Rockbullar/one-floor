@@ -64,19 +64,12 @@
           </div>
           <div class="black-card-bg mx-auto pt-6" style="background-color: #3b3b3b;">
             <div class="nft-cards pt-3 px-1 mx-auto" style="width: 18rem;">
-              <a href="#" class="flex-grow-1"> <%= render "shared/news_card" %></a>
-              <a href="#" class="flex-grow-1"> <%= render "shared/news_card" %></a>
-              <a href="#" class="flex-grow-1"> <%= render "shared/news_card" %></a>
-              <a href="#" class="flex-grow-1"> <%= render "shared/news_card" %></a>
-              <a href="#" class="flex-grow-1"> <%= render "shared/news_card" %></a>
-              <a href="#" class="flex-grow-1"> <%= render "shared/news_card" %></a>
+              <% @articles.each do |article| %>
+                <p class="flex-grow-1"> <%= render "shared/news_card", article: article %></p>
+              <% end %>
             </div>
           </div>
       </div>
     </div>
   </div>
-</div>
-
-<div class="tweet-here-pls">
-<%= @tweets %>
 </div>
