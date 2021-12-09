@@ -1,5 +1,5 @@
-const tweetDisplay = (twttr) => {
-  const url_arr = fetch("http://localhost:3000/tweet")
+const tweetDisplay = (url, twttr) => {
+  const url_arr = fetch(url)
   console.log(url_arr)
   debugger
   url_arr.forEach((id) => {
