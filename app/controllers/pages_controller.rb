@@ -18,6 +18,8 @@ class PagesController < ApplicationController
 
     if user_signed_in?
       @nfts = current_user.nfts
+    else
+      @nfts = Nft.all
     end
 
     # begin

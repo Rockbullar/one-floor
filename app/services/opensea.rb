@@ -38,9 +38,7 @@ class Opensea
       nft.save!
     end
   end
-
-  def update_eth_price
-
+  
   private
 
   def retrieve_highest_bid(nft)
