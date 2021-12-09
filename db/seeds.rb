@@ -80,7 +80,7 @@ def create_nft(collection, contract_id)
     end
     nft.save!
   end
-  puts "All NFTs creatd for the collection"
+  puts "All NFTs created for the collection"
 end
 
 contract_arr.each do |contract|

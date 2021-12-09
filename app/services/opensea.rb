@@ -19,15 +19,15 @@ class Opensea
       nft = Nft.find_or_create_by!(
         token_id: api_nft["token_id"],
         contract_id: api_nft["asset_contract"]["address"],
-        collection: retrieve_collection(api_nft["asset_contract"]["address"])
+        collection: retrieve_collection(api_nft["collection"]["slug"])
       )
 
       nft.image_url ||= api_nft["image_url"]
       nft.name ||= api_nft["name"]
       nft.slug ||= api_nft["collection"]["slug"]
-      nft.twitter_url ||= "https://twitter.com/#{api_nft['collection']['twitter_username']}"
-      nft.discord_url ||= api_nft["collection"]["discord_url"]
       nft.permalink ||= api_nft["permalink"]
+      # nft.twitter_url ||= "https://twitter.com/#{api_nft['collection']['twitter_username']}"
+      # nft.discord_url ||= api_nft["collection"]["discord_url"]
 
       if User.find_by(wallet_id: @wallet_id)
         nft.user ||= User.find_by(wallet_id: @wallet_id)
@@ -87,7 +87,7 @@ class Opensea
   end
 
   def add_collection_to_watchlist(slug)
-    
+
   end
 
   private
@@ -113,25 +113,49 @@ class Opensea
     highest_bid_eth_price
   end
 
-  def retrieve_collection(contract_id)
-    url = URI("#{@base_url}/asset_contract/#{contract_id}")
+  def retrieve_collection(slug)
+    url = URI("#{@base_url}/collection/#{slug}")
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
     request = Net::HTTP::Get.new(url)
     response = http.request(request)
     collection = JSON.parse(response.read_body)
     project = Collection.find_or_create_by!(
-      contract_id: contract_id
+      slug: slug
     )
 
-    project.name ||= collection["collection"]["name"]
-    project.description ||= collection["collection"]["description"]
-    project.slug ||= collection["collection"]["slug"]
+    project.name ||= collection["collection"]["primary_asset_contracts"]["name"]
+    project.description ||= collection["collection"]["primary_asset_contracts"]["description"]
+    project.contract_id ||= collection["collection"]["primary_asset_contracts"]["address"]
     project.twitter_username ||= collection["collection"]["twitter_username"]
     project.image_url ||= collection["collection"]["featured_image_url"]
     project.discord_url ||= collection["collection"]["discord_url"]
+    project.twitter_url ||= "https://twitter.com/#{collection['collection']['twitter_username']}"
+    project.floor_price ||= collection["stats"]["floor_price"]
 
     project.save!
     return project
   end
+
+  # def retrieve_collection(contract_id)
+  #   url = URI("#{@base_url}/asset_contract/#{contract_id}")
+  #   http = Net::HTTP.new(url.host, url.port)
+  #   http.use_ssl = true
+  #   request = Net::HTTP::Get.new(url)
+  #   response = http.request(request)
+  #   collection = JSON.parse(response.read_body)
+  #   project = Collection.find_or_create_by!(
+  #     contract_id: contract_id
+  #   )
+
+  #   project.name ||= collection["collection"]["name"]
+  #   project.description ||= collection["collection"]["description"]
+  #   project.slug ||= collection["collection"]["slug"]
+  #   project.twitter_username ||= collection["collection"]["twitter_username"]
+  #   project.image_url ||= collection["collection"]["featured_image_url"]
+  #   project.discord_url ||= collection["collection"]["discord_url"]
+
+  #   project.save!
+  #   return project
+  # end
 end
