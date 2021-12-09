@@ -4,6 +4,8 @@ class Opensea
     @wallet_id = wallet_id
   end
 
+  # based on the wallet id, retrieve all the nfts associated with the wallet id
+  # if the nft ald exist in the db, we'll just update if need to be updated
   def retrieve_nfts
     port_url = URI("#{@base_url}/assets?owner=#{@wallet_id}&order_direction=desc&offset=0&limit=20")
     port_http = Net::HTTP.new(port_url.host, port_url.port)
@@ -26,11 +28,40 @@ class Opensea
       nft.twitter_url ||= "https://twitter.com/#{api_nft['collection']['twitter_username']}"
       nft.discord_url ||= api_nft["collection"]["discord_url"]
       nft.permalink ||= api_nft["permalink"]
-      nft.user ||= User.find_by(wallet_id: @wallet_id)
+
+      if User.find_by(wallet_id: @wallet_id)
+        nft.user ||= User.find_by(wallet_id: @wallet_id)
+      end
 
       nft.last_sale_eth_price = api_nft["last_sale"].nil? ? 0 : api_nft["last_sale"]["total_price"]
+      nft.highest_bid_eth_price = retrieve_highest_bid(nft)
       nft.save!
     end
+  end
+
+  def update_eth_price
+
+  private
+
+  def retrieve_highest_bid(nft)
+    bid_url = URI("#{@base_url}/asset/#{nft.contract_id}/#{nft.token_id}/")
+    bid_http = Net::HTTP.new(bid_url.host, bid_url.port)
+    bid_http.use_ssl = true
+    bid_request = Net::HTTP::Get.new(bid_url)
+    bid_response = bid_http.request(bid_request)
+    bid_parsed = JSON.parse(bid_response.read_body)
+    highest_bid_eth_price = 0
+
+    unless bid_parsed["orders"].empty?
+      order_arr = bid_parsed["orders"]
+      highest_bid = order_arr.max_by do |bid|
+        bid["current_price"]
+      end
+
+      highest_bid_eth_price = highest_bid["current_price"].to_f
+    end
+
+    highest_bid_eth_price
   end
 
   def retrieve_collection(contract_id)
