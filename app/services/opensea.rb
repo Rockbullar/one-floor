@@ -80,7 +80,7 @@ class Opensea
     project.image_url ||= collection["collection"]["featured_image_url"]
     project.discord_url ||= collection["collection"]["discord_url"]
     project.twitter_url ||= "https://twitter.com/#{collection['collection']['twitter_username']}"
-    project.floor_price ||= collection["stats"]["floor_price"]
+    project.floor_price = collection["collection"]["stats"]["floor_price"]
 
     project.save!
     return project
