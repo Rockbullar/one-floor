@@ -1,4 +1,7 @@
 require "open-uri"
+require "json"
+require "typhoeus"
+
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
@@ -24,6 +27,32 @@ class PagesController < ApplicationController
   end
 
   def about
+  end
+
+  def twitter
+    bearer_token = ENV["TWITTER_BEARER_TOKEN"]
+    query = "#creaturesNFT"
+    url = "https://api.twitter.com/2/tweets/search/recent"
+
+    query_params = {
+      "query": query,
+      "max_results": 30,
+      "tweet.fields": "attachments,author_id,conversation_id,created_at,entities,id,lang",
+      "user.fields": "description"
+    }
+    options = {
+      method: 'get',
+      headers: {
+        "User-Agent": "v2RecentSearchRuby",
+        "Authorization": "Bearer #{bearer_token}"
+      },
+      params: query_params
+    }
+
+    request = Typhoeus::Request.new(url, options)
+    response = request.run
+    result = JSON.parse(response.body)["data"].map { |e| e["id"] }
+    render json: result
   end
 
   private

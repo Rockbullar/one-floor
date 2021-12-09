@@ -12,7 +12,6 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-
 // ----------------------------------------------------
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
@@ -36,6 +35,5 @@ document.addEventListener('turbolinks:load', () => {
     console.log('twitter is not loaded');
   }
 });
-
 
 import "controllers"

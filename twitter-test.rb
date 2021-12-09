@@ -1,5 +1,4 @@
 # This script uses your bearer token to authenticate and make a Search request
-
 require 'json'
 require 'typhoeus'
 
