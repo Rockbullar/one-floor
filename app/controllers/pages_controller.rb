@@ -16,7 +16,11 @@ class PagesController < ApplicationController
       @gas_price = 'error'
     end
 
-    @nfts = current_user.nfts
+    if user_signed_in?
+      @nfts = current_user.nfts
+    else
+      @nfts = Nft.all
+    end
     # begin
     #   @nfts = current_user.nfts
     #   raise
