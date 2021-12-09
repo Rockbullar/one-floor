@@ -21,3 +21,4 @@ article_arr.each do |article|
   puts article["title"]
   puts article["description"]
 end
+https://newsapi.org/v2/everything?q=+nft&from=2021-12-01&to=2021-12-08&sortBy=publishedAt&language=en&apiKey=25638f9687ad481d8831606d3ad9ce97

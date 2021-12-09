@@ -19,17 +19,15 @@ class PagesController < ApplicationController
       @gas_price = 'error'
     end
 
-    begin
-      @portfolio = portfolio
-    rescue
-      @portfolio = 'xxx'
-    end
+    # begin
+    #   @portfolio = portfolio
+    # rescue
+    #   @portfolio = 'xxx'
+    # end
 
-    begin
-      @tweets = tweets
-    rescue
-      @tweets = 'error'
-    end
+    articles_service = Articles.new
+    @articles = articles_service.call
+    # raise
   end
 
   private
@@ -89,34 +87,5 @@ class PagesController < ApplicationController
       @nfts << nft
     end
     return @nfts
-  end
-
-  def tweets
-    bearer_token = ENV["TWITTER_BEARER_TOKEN"]
-    query = "(from:BoredApeyc OR from:CreatureNFT) -is:retweet"
-    url = "https://api.twitter.com/2/tweets/search/recent"
-
-    query_params = {
-      "query": query,
-      "max_results": 30,
-      "tweet.fields": "attachments,author_id,conversation_id,created_at,entities,id,lang",
-      "user.fields": "description"
-    }
-
-    options = {
-      method: 'get',
-      headers: {
-        "User-Agent": "v2RecentSearchRuby",
-        "Authorization": "Bearer #{bearer_token}"
-      },
-      params: query_params
-    }
-
-    request = Typhoeus::Request.new(url, options)
-    response = request.run
-    result = JSON.parse(response.body)
-    result['data'].each do |responses|
-      puts responses['text']
-    end
   end
 end
