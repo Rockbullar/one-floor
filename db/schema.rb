@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_09_091320) do
+ActiveRecord::Schema.define(version: 2021_12_09_141639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 2021_12_09_091320) do
     t.float "floor_price"
     t.integer "num_owners"
     t.string "twitter_url"
-    t.string "permalink"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -62,6 +61,7 @@ ActiveRecord::Schema.define(version: 2021_12_09_091320) do
     t.string "name"
     t.string "slug"
     t.bigint "user_id"
+    t.string "permalink"
     t.index ["collection_id"], name: "index_nfts_on_collection_id"
     t.index ["user_id"], name: "index_nfts_on_user_id"
   end
