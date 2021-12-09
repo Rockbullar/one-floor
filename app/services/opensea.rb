@@ -38,7 +38,7 @@ class Opensea
       nft.save!
     end
   end
-  
+
   private
 
   def retrieve_highest_bid(nft)
