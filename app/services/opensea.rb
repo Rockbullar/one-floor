@@ -40,7 +40,7 @@ class Opensea
   end
 
   def self.update_single_collection(slug)
-    url = URI("https://api.opensea.io/api/v1/collection/#{slug}")
+    url = URI("https://api.opensea.io/api/v1/collection/#{slug}/stats")
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
     request = Net::HTTP::Get.new(url)
@@ -49,9 +49,9 @@ class Opensea
     if Collection.find_by_slug(slug)
       collection = Collection.find_by_slug(slug)
       collection.update!({
-        floor_price: parsed["collection"]["stats"]["floor_price"].to_f,
-        total_supply: parsed["collection"]["primary_asset_contracts"].first["total_supply"].to_i,
-        num_owners: parsed["collection"]["stats"]["num_owners"].to_i,
+        floor_price: parsed["stats"]["floor_price"].to_f,
+        total_supply: parsed["stats"]["total_supply"].first["total_supply"].to_i,
+        num_owners: parsed["stats"]["num_owners"].to_i,
       })
     end
   end
