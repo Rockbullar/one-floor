@@ -2,10 +2,11 @@
   <div class="d-flex justify-content-between">
     <div class="left-side flex-grow-1 my-1">
       <div class="nft-collection-number bg-light w-80 ml-3">
-          <p class="mb-0 text-dark">NFT Number</p>
+          <p class="mb-0 text-dark">#<%=nft.token_id%></p>
       </div>
       <div class="card-body d-flex justify-content-between mx-1 pt-0 pb-2">
-        <div class="avatar">
+        <div class="avatar float-left">
+          <img src=" <%=nft.image_url%> "alt="nft">
         </div>
         <div class="last-sale-text">
             <p class="mb-1">last</p>
