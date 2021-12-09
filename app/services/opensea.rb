@@ -83,14 +83,111 @@ class Opensea
       nft.update!({
         highest_bid_eth_price: highest_bid_eth_price
       })
+
     end
   end
 
-  def add_collection_to_watchlist(slug)
-    
+  def self.add_collection_to_watchlist(slug, user)
+    if Collection.find_by({ slug: slug })
+      project = Collection.find_by({ slug: slug })
+    else
+      url = URI("https://api.opensea.io/api/v1/collection/#{slug}")
+      http = Net::HTTP.new(url.host, url.port)
+      http.use_ssl = true
+      request = Net::HTTP::Get.new(url)
+      response = http.request(request)
+      collection = JSON.parse(response.read_body)
+      project = Collection.new({ slug: slug })
+
+      project.name = collection["collection"]["primary_asset_contracts"]["name"]
+      project.description = collection["collection"]["primary_asset_contracts"]["description"]
+      project.contract_id = collection["collection"]["primary_asset_contracts"]["address"]
+      project.twitter_username = collection["collection"]["twitter_username"]
+      project.image_url = collection["collection"]["featured_image_url"]
+      project.discord_url = collection["collection"]["discord_url"]
+      project.twitter_url = "https://twitter.com/#{collection['collection']['twitter_username']}"
+      project.floor_price = collection["collection"]["stats"]["floor_price"]
+
+      project.save!
+
+      user.add_collection_to_watchlist(project)
+    end
+  end
+
+  def self.add_nft_to_watchlist(contract_id, token_id, user)
+    if Nft.find_by({ contract_id: contract_id, token_id: token_id })
+      user.add_collection_to_watchlist = Nft.find_by({ contract_id: contract_id, token_id: token_id })
+    else
+      url = URI("https://api.opensea.io/api/v1/asset/#{contract_id}/#{token_id}/")
+      http = Net::HTTP.new(url.host, url.port)
+      http.use_ssl = true
+      request = Net::HTTP::Get.new(url)
+      response = http.request(request)
+      parsed = JSON.parse(response.read_body)
+
+      if Collection.find({slug: parsed["collection"]["slug"]})
+        collection = Collection.find({slug: parsed["collection"]["slug"]})
+      else
+        url = URI("https://api.opensea.io/api/v1/collection/#{slug}")
+        http = Net::HTTP.new(url.host, url.port)
+        http.use_ssl = true
+        request = Net::HTTP::Get.new(url)
+        response = http.request(request)
+        api_collection = JSON.parse(response.read_body)
+        collection = Collection.new({ slug: slug })
+        collection.name = api_collection["collection"]["primary_asset_contracts"]["name"]
+        collection.description = api_collection["collection"]["primary_asset_contracts"]["description"]
+        collection.contract_id = api_collection["collection"]["primary_asset_contracts"]["address"]
+        collection.twitter_username = api_collection["collection"]["twitter_username"]
+        collection.image_url = api_collection["collection"]["featured_image_url"]
+        collection.discord_url = api_collection["collection"]["discord_url"]
+        collection.twitter_url = "https://twitter.com/#{api_collection['collection']['twitter_username']}"
+        collection.floor_price = api_collection["collection"]["stats"]["floor_price"]
+        collection.save!
+      end
+
+      nft = Nft.new({
+        token_id: token_id,
+        contract_id: contract_id,
+        collection: collection
+      })
+
+      nft.image_url = parsed["image_url"]
+      nft.name = parsed["name"]
+      nft.slug = parsed["collection"]["slug"]
+      nft.permalink = parsed["permalink"]
+      # nft.twitter_url ||= "https://twitter.com/#{api_nft['collection']['twitter_username']}"
+      # nft.discord_url ||= api_nft["collection"]["discord_url"]
+
+
+      nft.last_sale_eth_price = api_nft["last_sale"].nil? ? 0 : api_nft["last_sale"]["total_price"]
+      nft.highest_bid_eth_price = Opensea.retrieve_highest_bid(nft)
+      nft.save!
+    end
   end
 
   private
+
+  def self.retrieve_highest_bid(nft)
+    bid_url = URI("#{@base_url}/asset/#{nft.contract_id}/#{nft.token_id}/")
+    bid_http = Net::HTTP.new(bid_url.host, bid_url.port)
+    bid_http.use_ssl = true
+    bid_request = Net::HTTP::Get.new(bid_url)
+    bid_response = bid_http.request(bid_request)
+    bid_parsed = JSON.parse(bid_response.read_body)
+    highest_bid_eth_price = 0
+
+    unless bid_parsed["orders"].empty?
+      order_arr = bid_parsed["orders"]
+      highest_bid = order_arr.max_by do |bid|
+        bid["current_price"]
+      end
+
+      highest_bid_eth_price = highest_bid["current_price"].to_f
+    end
+
+    highest_bid_eth_price
+  end
 
   def retrieve_highest_bid(nft)
     bid_url = URI("#{@base_url}/asset/#{nft.contract_id}/#{nft.token_id}/")

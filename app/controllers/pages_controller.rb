@@ -6,6 +6,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
+    x = User.new
+    Opensea.add_nft_to_watchlist('0x60e4d786628fea6478f785a6d7e704777c86a7c6', '17107',x)
     Opensea.update_single_collection('mutant-ape-yacht-club')
     Opensea.update_single_asset('0x60e4d786628fea6478f785a6d7e704777c86a7c6', '17107')
     etherscan_key = ENV["ETHERSCAN_KEY"]
@@ -20,13 +22,13 @@ class PagesController < ApplicationController
     rescue
       @gas_price = 'error'
     end
-    
+
     if user_signed_in?
       @nfts = current_user.nfts
     else
       @nfts = Nft.all
     end
-    
+
     articles_service = Articles.new
     @articles = articles_service.call
 
@@ -52,7 +54,7 @@ class PagesController < ApplicationController
     #   @portfolio = 'xxx'
     # end
 
-    
+
     # raise
   end
 end
