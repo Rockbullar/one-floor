@@ -21,6 +21,7 @@ class PagesController < ApplicationController
     rescue
       @portfolio = 'xxx'
     end
+    @nfts = Nft.all
   end
 
   def about

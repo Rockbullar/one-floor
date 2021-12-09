@@ -9,15 +9,15 @@
         </div>
         <div class="last-sale-text">
             <p class="mb-1">last</p>
-            <p>price</p>
+            <p><%= '%.3f' % (nft.last_sale_eth_price/10**18) %></p>
         </div>
         <div class="highest-bid-text">
             <p class="mb-1">highest</p>
-            <p>price</p>
+            <p><%= '%.3f' % (nft.highest_bid_eth_price/10**18) %></p>
         </div>
       </div>
     </div>
-    <div class="right-side socials mr-2 pt-1 mg-0">
+    <div class="right-side socialgaas mr-2 pt-1 mg-0">
         <a href="#"><i class="fab fa-twitter"></i></a>
         <a href="#"><i class="fas fa-globe-americas"></i></a>
         <a href="#"><i class="fab fa-discord"></i></a>
