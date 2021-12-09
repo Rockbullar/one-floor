@@ -1,4 +1,7 @@
 require "open-uri"
+require "json"
+require "typhoeus"
+
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
@@ -15,13 +18,15 @@ class PagesController < ApplicationController
     rescue
       @gas_price = 'error'
     end
-
+    
     if user_signed_in?
       @nfts = current_user.nfts
     else
       @nfts = Nft.all
     end
-
+    
+    articles_service = Articles.new
+    @articles = articles_service.call
     # begin
     #   @nfts = current_user.nfts
     #   raise
@@ -42,15 +47,8 @@ class PagesController < ApplicationController
     #   raise
     #   @portfolio = 'xxx'
     # end
-  end
 
-  def about
-  end
-
-  private
-
-  def portfolio
-    raise
-
+    
+    # raise
   end
 end
