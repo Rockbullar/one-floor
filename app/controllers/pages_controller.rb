@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
+    @test = Opensea.update_single_collection('mutant-ape-yacht-club')
     etherscan_key = ENV["ETHERSCAN_KEY"]
     begin
       @eth_usd = JSON.parse(URI.open("https://api.etherscan.io/api?module=stats&action=ethprice&apikey=#{etherscan_key}").read)["result"]["ethusd"]
@@ -21,6 +22,7 @@ class PagesController < ApplicationController
     else
       @nfts = Nft.all
     end
+
 
     # begin
     #   @nfts = current_user.nfts
