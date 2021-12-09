@@ -27,6 +27,7 @@ class PagesController < ApplicationController
     
     articles_service = Articles.new
     @articles = articles_service.call
+
     # begin
     #   @nfts = current_user.nfts
     #   raise
