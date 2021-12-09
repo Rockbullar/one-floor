@@ -39,8 +39,6 @@ class Opensea
     end
   end
 
-  def update_eth_price
-
   private
 
   def retrieve_highest_bid(nft)
@@ -62,6 +60,28 @@ class Opensea
     end
 
     highest_bid_eth_price
+  end
+
+  def retrieve_collection(contract_id)
+    url = URI("#{@base_url}/asset_contract/#{contract_id}")
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    request = Net::HTTP::Get.new(url)
+    response = http.request(request)
+    collection = JSON.parse(response.read_body)
+    project = Collection.find_or_create_by!(
+      contract_id: contract_id
+    )
+
+    project.name ||= collection["collection"]["name"]
+    project.description ||= collection["collection"]["description"]
+    project.slug ||= collection["collection"]["slug"]
+    project.twitter_username ||= collection["collection"]["twitter_username"]
+    project.image_url ||= collection["collection"]["featured_image_url"]
+    project.discord_url ||= collection["collection"]["discord_url"]
+
+    project.save!
+    return project
   end
 
   def retrieve_collection(contract_id)
