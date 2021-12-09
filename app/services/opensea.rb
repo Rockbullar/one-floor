@@ -73,9 +73,9 @@ class Opensea
       slug: slug
     )
 
-    project.name ||= collection["collection"]["primary_asset_contracts"]["name"]
-    project.description ||= collection["collection"]["primary_asset_contracts"]["description"]
-    project.contract_id ||= collection["collection"]["primary_asset_contracts"]["address"]
+    project.name ||= collection["collection"]["primary_asset_contracts"][0]["name"]
+    project.description ||= collection["collection"]["primary_asset_contracts"][0]["description"]
+    project.contract_id ||= collection["collection"]["primary_asset_contracts"][0]["address"]
     project.twitter_username ||= collection["collection"]["twitter_username"]
     project.image_url ||= collection["collection"]["featured_image_url"]
     project.discord_url ||= collection["collection"]["discord_url"]
