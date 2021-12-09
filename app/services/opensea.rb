@@ -57,7 +57,6 @@ class Opensea
   end
 
   def self.update_single_asset(contract_id, token_id)
-
     url = URI("https://api.opensea.io/api/v1/asset/#{contract_id}/#{token_id}")
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
@@ -85,6 +84,10 @@ class Opensea
         highest_bid_eth_price: highest_bid_eth_price
       })
     end
+  end
+
+  def add_collection_to_watchlist(slug)
+    
   end
 
   private
