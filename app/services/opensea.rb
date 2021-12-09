@@ -87,7 +87,7 @@ class Opensea
   end
 
   def add_collection_to_watchlist(slug)
-
+    
   end
 
   private
