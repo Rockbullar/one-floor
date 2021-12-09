@@ -16,7 +16,7 @@ contract_arr = ["0x2bd60f290060451e3644a7559d520c2e9b32c7e9","0xbc4ca0eda7647a8a
 
 def create_collection(collection, contract)
   project = Collection.new({
-    name: collection["collection"]["name"],
+   name: collection["collection"]["name"],
     description: collection["collection"]["description"],
     slug: collection["collection"]["slug"],
     twitter_username: collection["collection"]["twitter_username"],

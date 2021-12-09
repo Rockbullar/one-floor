@@ -21,6 +21,7 @@ class PagesController < ApplicationController
     else
       @nfts = Nft.all
     end
+
     # begin
     #   @nfts = current_user.nfts
     #   raise
