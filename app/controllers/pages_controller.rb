@@ -23,25 +23,27 @@ class PagesController < ApplicationController
     # end
 
     # get watchlist_collections
-    @watchlist_collections = current_user.watchlist_collections
-    @watchlist_collections_addresses = @watchlist_collections.map(&:contract_id)
+    @watchlist_collections = current_user.watchlist_collections.to_a
+    # @watchlist_collections_addresses = @watchlist_collections.map(&:contract_id)
     # get collections from watchlist_nfts
     @watchlist_nfts = current_user.watchlist_nfts
+
+    @watchlist_nfts.each do |nft|
+      unless @watchlist_collections.include?(nft)
+        @watchlist_collections.push(nft)
+      end
+    end
+
     @watchlist_nfts_list = []
     current_user.watchlist_nfts.each do |nft|
       @watchlist_nfts_list.push([nft.collection.contract_id, nft.token_id])
     end
 
-    @watchlist_nfts_list.each do |nft|
-      unless @watchlist_collections_addresses.include?(nft[0])
-        @watchlist_collections_addresses.push(nft[0])
-      end
-    end
     # call method to run api to update each collection
-    @watchlist_collections_addresses.each do |collection_address|
-      update_collection(collection_address)
+    @watchlist_collections.each do |collection|
+      update_collection(collection)
       # update_collection function not written
-    end
+    end     
 
     # call method to run batch api to update each nft
     update_nfts(@watchlist_nfts_list)
@@ -121,10 +123,17 @@ class PagesController < ApplicationController
     return @nfts
   end
 
-  private
+  def update_collection(collection)
+    url = URI("https://api.opensea.io/api/v1/asset_contract/#{collection.contract_id}")
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    request = Net::HTTP::Get.new(url)
+    response = http.request(request)
+    collection_update = JSON.parse(response.read_body)
 
-  def update_collection(collection_address)
+    collection.update!({
 
+    })
   end
 
   def update_nfts(nft_list)
