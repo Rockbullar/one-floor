@@ -16,13 +16,13 @@ contract_arr = ["0x2bd60f290060451e3644a7559d520c2e9b32c7e9","0xbc4ca0eda7647a8a
 
 def create_collection(collection, contract)
   project = Collection.new({
-   ` name: collection["collection"]["name"],
+   name: collection["collection"]["name"],
     description: collection["collection"]["description"],
     slug: collection["collection"]["slug"],
     twitter_username: collection["collection"]["twitter_username"],
     image_url: collection["collection"]["featured_image_url"],
     discord_url: collection["collection"]["discord_url"],
-    contract_id: contract`
+    contract_id: contract
   })
 
   stats_url = URI("https://api.opensea.io/api/v1/collection/#{project.slug}/stats")
