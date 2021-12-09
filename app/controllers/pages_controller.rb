@@ -17,8 +17,6 @@ class PagesController < ApplicationController
     end
 
     @nfts = current_user.nfts
-    type
-      []
     # begin
     #   @nfts = current_user.nfts
     #   raise
