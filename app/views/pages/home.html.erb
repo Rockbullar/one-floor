@@ -11,10 +11,7 @@
           </div>
           <div class="black-card-bg mx-auto pt-6" style="background-color: #3b3b3b;">
             <div class="nft-cards pt-3 px-1 mx-auto" style="width: 18rem;">
-              <%#= render @nfts %>
-              <%# @nfts.each do |nft| %>
-                <a class="flex-grow-1" href="#"> <%= render "shared/nft_collection_card" %></a>
-              <%# end %>
+              <p> YOu should have something here</p>
             </div>
           </div>
       </div>
@@ -34,16 +31,18 @@
           <div class="tab-content" id="pills-tabContent">
             <div class="black-card-bg mx-auto pt-6 tab-pane fade show active" id="pills-collection" style="background-color: #3b3b3b;">
               <div class="nft-cards pt-3 px-1 mx-auto" style="width: 18rem;">
-                <a href="#" class="flex-grow-1"> <%= render "shared/nft_collection_card" %></a>
-                <a href="#" class="flex-grow-1"> <%= render "shared/nft_collection_card" %></a>
-                <a href="#" class="flex-grow-1"> <%= render "shared/nft_collection_card" %></a>
-                <a href="#" class="flex-grow-1"> <%= render "shared/nft_collection_card" %></a>
+                <% @collections.first(4).each do |nft_collection| %>
+                  <a class="flex-grow-1" href="#">
+                    <%= render "shared/nft_collection_card", nft_collection: nft_collection %>
+                     <%#= render partial: "shared/nft_collection_card", locals: { nft_collection: nft_collection} %>
+                  </a>
+                <% end %>
               </div>
             </div>
             <div class="black-card-bg mx-auto pt-6 tab-pane fade" id="pills-individual"  style="background-color: #3b3b3b;">
               <div class="nft-cards pt-3 px-1 mx-auto" style="width: 18rem;">
                 <% @nfts.first(4).each do |nft| %>
-                <a href="#" class="flex-grow-1"> <%= render "shared/nft_individual_card", nft: nft %></a>
+                  <a href="#" class="flex-grow-1"> <%= render "shared/nft_individual_card", nft: nft %> </a>
                 <% end %>
               </div>
             </div>
