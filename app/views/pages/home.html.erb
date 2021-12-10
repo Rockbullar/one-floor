@@ -21,31 +21,30 @@
       <div class="tab-container mx-1 px-2 pb-2" >
         <ul class="nav nav-pills mb-0" id="pills-tab" role="tablist">
           <li class="nav-item">
-            <a class="nav-link text-white px-2 active px-1" id="pills-collection-tab" href="#pills-collection"  data-toggle="pill" role="tab"aria-selected="true">Collection Watchlist</a>
+            <a class="nav-link text-white px-2 active" id="pills-collection-tab" href="#pills-collection"  data-toggle="pill" role="tab" aria-selected="true">Collection Watchlist</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white px-2" style="" data-toggle="pill" href="#pills-individual" role="tab" aria-selected="false">Individual Watchlist</a>
+            <a class="nav-link text-white px-2" id="pills-individual-tab" data-toggle="pill" href="#pills-individual" role="tab" aria-selected="false">Individual Watchlist</a>
           </li>
         </ul>
-    </div>
+      </div>
       <div class="tab-content" id="pills-tabContent">
-            <div class="black-card-bg mx-auto pt-6 tab-pane fade show active" id="pills-collection" style="background-color: #3b3b3b;">
-              <div class="nft-cards pt-3 px-1 mx-auto" style="width: 18rem;">
-                <% @collections.first(4).each do |nft_collection| %>
-                  <a class="flex-grow-1" href="#">
-                    <%= render "shared/nft_collection_card", nft_collection: nft_collection %>
-                     <%#= render partial: "shared/nft_collection_card", locals: { nft_collection: nft_collection} %>
-                  </a>
-                <% end %>
-              </div>
-            </div>
+        <div class="black-card-bg mx-auto pt-6 tab-pane fade show active" id="pills-collection" style="background-color: #3b3b3b;height:75vh">
+          <div class="nft-cards pt-3 w-100">
+            <% @collections.each do |nft_collection| %>
+              <%# <a class="flex-grow-1" href="#"> %>
+              <%= render "shared/nft_collection_card", nft_collection: nft_collection %>
+              <%#= render partial: "shared/nft_collection_card", locals: { nft_collection: nft_collection} %>
+              <%# </a> %>
+            <% end %>
+          </div>
         </div>
+      </div>
         <div class="black-card-bg mx-auto pt-6 tab-pane fade" id="pills-individual"  style="background-color: #3b3b3b;height:75vh">
           <div class="nft-cards pt-3 w-100">
             <% @watchlist_nfts.each do |nft| %>
               <%= render "shared/nft_individual_card", nft: nft %></a>
             <% end %>
-          </div>
         </div>
       </div>
     </div>
