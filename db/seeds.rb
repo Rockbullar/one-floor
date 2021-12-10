@@ -4,7 +4,6 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 require 'json'
-require 'pry-byebug'
 
 puts "Cleanup DB"
 Nft.destroy_all
