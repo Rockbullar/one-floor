@@ -4,7 +4,7 @@
         <img src="<%= article[:image_url] %>" class="news-image" style="font-size: 12px;" alt="<%= article[:source] %>">
         <div class="news-content">
         <div> <%= article[:source] %> </div>
-          <a href="<%= article[:link] %>" class="mb-0 text-dark"><%= article[:text] %></a>
+          <a href="<%= article[:link] %>" target="_blank" class="mb-0 text-dark"><%= article[:text] %></a>
         </div>
       </div>
   </div>
