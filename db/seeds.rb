@@ -105,7 +105,7 @@ end
 seeded_user_list = ['0x241Af3d9a9959d0E78353Ff26f62A3eB7798202D', '0x77DB8C673263d0B48fb8c790458736cF102a3fE3', '0x98d365a3df9711603dd2ab52bf45b16796336726']
 
 seeded_user_list.each do |user|
-  unless User.find_by( wallet_id: user )
+  unless User.find_by( wallet_id: user.downcase )
     User.create!(
       wallet_id: user.downcase,
       password: 123456,
