@@ -39,12 +39,12 @@
             <% end %>
           </div>
         </div>
-      </div>
         <div class="black-card-bg mx-auto pt-6 tab-pane fade" id="pills-individual"  style="background-color: #3b3b3b;height:75vh">
           <div class="nft-cards pt-3 w-100">
             <% @watchlist_nfts.each do |nft| %>
               <%= render "shared/nft_individual_card", nft: nft %></a>
             <% end %>
+          </div>
         </div>
       </div>
     </div>
