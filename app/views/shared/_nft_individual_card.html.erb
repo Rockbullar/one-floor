@@ -2,23 +2,22 @@
   <div class="d-flex justify-content-between">
     <div class="left-side flex-grow-1 my-1">
       <div class="nft-collection-number bg-light w-80 ml-3">
-          <p class="mb-0 text-dark">#<%=nft.token_id%></p>
+          <p class="mb-0 text-dark">NFT Number</p>
       </div>
       <div class="card-body d-flex justify-content-between mx-1 pt-0 pb-2">
-        <div class="avatar float-left">
-          <img src=" <%=nft.image_url%> "alt="nft">
+        <div class="avatar">
         </div>
         <div class="last-sale-text">
             <p class="mb-1">last</p>
-            <p><%= '%.3f' % (nft.last_sale_eth_price/10**18) %></p>
+            <p>price</p>
         </div>
         <div class="highest-bid-text">
             <p class="mb-1">highest</p>
-            <p><%= '%.3f' % (nft.highest_bid_eth_price/10**18) %></p>
+            <p>price</p>
         </div>
       </div>
     </div>
-    <div class="right-side socialgaas mr-2 pt-1 mg-0">
+    <div class="right-side socials mr-2 pt-1 mg-0">
         <a href="#"><i class="fab fa-twitter"></i></a>
         <a href="#"><i class="fas fa-globe-americas"></i></a>
         <a href="#"><i class="fab fa-discord"></i></a>

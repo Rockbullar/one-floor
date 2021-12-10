@@ -18,17 +18,18 @@ class PagesController < ApplicationController
     rescue
       @gas_price = 'error'
     end
-    
+
     if user_signed_in?
       @nfts = current_user.nfts
     else
       @nfts = Nft.all
     end
-    
+
     articles_service = Articles.new
     @articles = articles_service.call
 
     @nfts = Nft.all
+    @collections = Collection.all
     # @nfts = User.where(wallet_id: "0x241Af3d9a9959d0E78353Ff26f62A3eB7798202D").nfts
 
     # begin
@@ -52,7 +53,7 @@ class PagesController < ApplicationController
     #   @portfolio = 'xxx'
     # end
 
-    
+
     # raise
   end
 end
