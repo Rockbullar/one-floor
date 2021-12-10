@@ -9,15 +9,15 @@ class User < ApplicationRecord
   acts_as_favoritor
 
   def watchlist
-    favorites.where(scope: :watchlist)
+    favorites.where(scope: :watchlist).map(&:favoritable)
   end
 
   def watchlist_collections
-    favorites.where(scope: :watchlist, favoritable_type: :Collection)
+    favorites.where(scope: :watchlist, favoritable_type: :Collection).map(&:favoritable)
   end
 
   def watchlist_nfts
-    favorites.where(scope: :watchlist, favoritable_type: :Nfts)
+    favorites.where(scope: :watchlist, favoritable_type: :Nft).map(&:favoritable)
   end
 
   def portfolio
