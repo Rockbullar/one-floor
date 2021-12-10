@@ -94,7 +94,7 @@ Collection.destroy_all
 #   create_collection(collection, contract)
 # end
 
-wallet_array = ['0x21567c4f98450001f75c42d1b259398f0e280c6b', '0xfcfb7c0954f5c82d1c81214560d540897ffd9aec', '0xa23cb68780be74b254a5f7210ec6cf1c76289953']
+wallet_array = ['0x21567c4f98450001f75c42d1b259398f0e280c6b', '0xfcfb7c0954f5c82d1c81214560d540897ffd9aec', '0xa23cb68780be74b254a5f7210ec6cf1c76289953', '0x241Af3d9a9959d0E78353Ff26f62A3eB7798202D']
 
 wallet_array.each do |wallet|
   x = Opensea.new(wallet)

@@ -10,11 +10,12 @@
       </div>
       <div class="black-card-bg mx-auto pt-6" style="background-color: #3b3b3b;height:75vh">
         <div class="nft-cards pt-3 w-100">
-          <%#= render @nfts %>
+          <%= render @nfts %>
           <%# @nfts.each do |nft| %>
-            <a class="flex-grow-1" href="#"> <%= render "shared/nft_collection_card" %></a>
+            <%#= render "shared/nft_individual_card" %></a>
           <%# end %>
         </div>
+      </div>
       </div>
     </div>
     <div class="col-4">
@@ -39,8 +40,8 @@
         </div>
         <div class="black-card-bg mx-auto pt-6 tab-pane fade" id="pills-individual"  style="background-color: #3b3b3b;height:75vh">
           <div class="nft-cards pt-3 w-100">
-            <% @nfts.first(4).each do |nft| %>
-            <a href="#" class="flex-grow-1"> <%= render "shared/nft_individual_card", nft: nft %></a>
+            <% current_user.watchlist_nfts.each do |nft| %>
+              <%= render "shared/nft_individual_card", nft: nft %></a>
             <% end %>
           </div>
         </div>
