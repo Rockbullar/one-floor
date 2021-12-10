@@ -17,7 +17,7 @@ class User < ApplicationRecord
   end
 
   def watchlist_nfts
-    favorites.where(scope: :watchlist, favoritable_type: :Nfts)
+    favorites.where(scope: :watchlist, favoritable_type: :Nft).map(&:favoritable)
   end
 
   def portfolio
