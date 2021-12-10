@@ -22,10 +22,11 @@ class PagesController < ApplicationController
     if user_signed_in?
       @nfts = current_user.nfts
       @watchlist_nfts = current_user.watchlist_nfts
-
+      @collections = current_user.watchlist_collections
     else
       @nfts = Nft.first(5)
       @watchlist_nfts = Nft.last(5)
+      @collections = Collection.first(5)
     end
 
     articles_service = Articles.new

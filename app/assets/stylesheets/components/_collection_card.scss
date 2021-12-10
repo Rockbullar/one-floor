@@ -1,4 +1,4 @@
-.nft-card {
+p.nft-card {
   border-radius: 25px;
   border-width: 3px;
   border-color: #fff;
@@ -7,17 +7,20 @@
 
 .nft-name > p {
   padding-bottom: 0;
+  justify-items: center;
 }
 
 .floor {
   color: black;
 }
 
-.graph {
+.floor-price-text {
   color: black;
+  font-size: 11px;
 }
 
 .socials {
+  float: right;
   display: flex;
   flex-direction: column;
   text-decoration: none;
