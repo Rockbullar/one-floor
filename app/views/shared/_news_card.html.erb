@@ -1,4 +1,4 @@
-<div class="news-card bg-light mb-1 pt-1 align-text-center mx-3 my-1">
+<div class="news-card bg-light mx-3 mt-3 <%= @articles.last == article && "mb-3" %>">
   <div class="d-flex flex-grow-1 my-1 news-box pr-3">
       <div class="card-body d-flex align-items-center mx-1 py-1" style="gap: 8px;">
         <img src="<%= article[:image_url] %>" class="news-image" style="font-size: 12px;" alt="<%= article[:source] %>">

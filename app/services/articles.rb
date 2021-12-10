@@ -23,7 +23,7 @@ class Articles
 
     query_params = {
       "query": query,
-      "max_results": 30,
+      "max_results": 10,
       "tweet.fields": "author_id,created_at",
       "expansions": "author_id",
       "user.fields": "description,profile_image_url"
