@@ -8,7 +8,7 @@
           </li>
         </ul>
       </div>
-      <div class="black-card-bg mx-auto pt-6" style="background-color: #3b3b3b;height:75vh">
+      <div class="black-card-bg" style="background-color: #3b3b3b; overflow-y: scroll; height: 75vh;">
         <div class="nft-cards pt-3 w-100">
           <%= render @nfts %>
           <%# @nfts.each do |nft| %>
@@ -30,7 +30,7 @@
         </ul>
       </div>
       <div class="tab-content" id="pills-tabContent">
-        <div class="black-card-bg mx-auto pt-6 tab-pane fade show active" id="pills-collection" style="background-color: #3b3b3b;height:75vh">
+        <div class="black-card-bg tab-pane fade show active" id="pills-collection" style="background-color: #3b3b3b; overflow-y: scroll; height: 75vh; height:75vh; ">
           <div class="nft-cards pt-3 w-100">
             <a href="#" class="flex-grow-1"> <%= render "shared/nft_collection_card" %></a>
             <a href="#" class="flex-grow-1"> <%= render "shared/nft_collection_card" %></a>
@@ -56,8 +56,8 @@
             </li>
           </ul>
         </div>
-        <div class="black-card-bg mx-auto pt-6" style="background-color: #3b3b3b;">
-          <div class="nft-cards pt-3 px-1 mx-auto" style="height: 75vh; overflow-y: scroll;">
+        <div class="black-card-bg" style="background-color: #3b3b3b; overflow-y: scroll; height: 75vh;">
+          <div class="nft-cards">
             <% @articles.each do |article| %>
               <%= render "shared/news_card", article: article %>
             <% end %>
