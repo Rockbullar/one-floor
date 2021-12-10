@@ -41,21 +41,22 @@ class Articles
     request = Typhoeus::Request.new(url, options)
     response = request.run
     results = JSON.parse(response.body)
+    unless results["data"].nil?
+      results["data"].map do |tweet|
+        author_id = tweet["author_id"]
+        author = results["includes"]["users"].find do |user|
+          user["id"] == author_id
+        end
 
-    results["data"].map do |tweet|
-      author_id = tweet["author_id"]
-      author = results["includes"]["users"].find do |user|
-        user["id"] == author_id
+        username = author["username"]
+
+        {
+          image_url: author["profile_image_url"],
+          text: tweet["text"][0..50] + "...",
+          link: "https://twitter.com/#{username}/status/#{tweet["id"]}",
+          source: username
+        }
       end
-
-      username = author["username"]
-
-      {
-        image_url: author["profile_image_url"],
-        text: tweet["text"][0..50] + "...",
-        link: "https://twitter.com/#{username}/status/#{tweet["id"]}",
-        source: username
-      }
     end
   end
 
