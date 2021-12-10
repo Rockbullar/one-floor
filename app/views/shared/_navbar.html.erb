@@ -12,10 +12,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active mx-4 d-flex align-content-center" style={color:white}>
-        <p class='my-auto'>ETH: $<%= @eth_usd %> USD</p>
+        <h5 class='my-auto'>ETH: </h5> <h5 class="ethprice my-auto"> <%= @eth_usd %> </h5> <h5 class="my-auto"> USD</h5>
       </li>
       <li class="nav-item active mx-4 d-flex" style={color:white}>
-        <p class='my-auto'>Gas: <%= @gas_price %> Gwei</p>
+        <h5 class='my-auto'>Gas: </h5> <h5 class="gasprice my-auto"> <%= @gas_price %> </h5> <h5 class="my-auto"> Gwei</h5>
       </li>
       <% if user_signed_in? %>
         <li class="nav-item dropdown">
