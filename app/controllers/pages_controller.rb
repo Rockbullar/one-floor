@@ -28,6 +28,9 @@ class PagesController < ApplicationController
     articles_service = Articles.new
     @articles = articles_service.call
 
+    @nfts = Nft.all
+    # @nfts = User.where(wallet_id: "0x241Af3d9a9959d0E78353Ff26f62A3eB7798202D").nfts
+
     # begin
     #   @nfts = current_user.nfts
     #   raise
