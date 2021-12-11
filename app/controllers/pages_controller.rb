@@ -1,6 +1,7 @@
 require "open-uri"
 require "json"
 require "typhoeus"
+require "nokogiri"
 
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
@@ -14,9 +15,13 @@ class PagesController < ApplicationController
     end
 
     begin
-      @gas_price = JSON.parse(URI.open("https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=#{etherscan_key}").read)["result"]["SafeGasPrice"]
+      # @gas_price = JSON.parse(URI.open("https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=#{etherscan_key}").read)["result"]["SafeGasPrice"]
+      @gas_seller = opengasscraper[4][0].to_f
+      @gas_buyer = opengasscraper[5][0].to_f
     rescue
-      @gas_price = 'error'
+      # @gas_price = 'error'
+      @gas_seller = 'error'
+      @gas_buyer = 'error'
     end
 
     if user_signed_in?
@@ -55,8 +60,17 @@ class PagesController < ApplicationController
     #   raise
     #   @portfolio = 'xxx'
     # end
-
-
-    # raise
   end
+
+  private
+
+  def opengasscraper
+    html_content = URI.open('https://pumpmygas.xyz/').read
+    doc = Nokogiri::HTML(html_content)
+    doc.search('span.text-2xl.sm\:text-3xl.font-light.tracking-tight').map do |price|
+      result = []
+      result << price.text.strip
+    end
+  end
+
 end
