@@ -1,17 +1,16 @@
+const etherscan_key = process.env.ETHERSCAN_KEY
+
 const getEthData = async () => {
     fetch('https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD')
+    // fetch(`https://api.etherscan.io/api?module=stats&action=ethprice&apikey=${etherscan_key}`)
       .then(response => response.json())
       .then(data => {
         console.log(data);
         document.getElementById("info").innerHTML = data.USD
+        // document.getElementById("info").innerHTML = data.result.ethusd
       });
-}
+};
 
-// tcount = setInterval(function(){
-//     tcount++
-//   if (tcount==10 ) {getBtcData(); tcount=0}
-//   document.getElementById("infotime").innerHTML = 'Next update in ' + (10-tcount) + ' seconds'
-// },1000);
 
 const fetchEth = () => {
   setInterval(getEthData,1000);
