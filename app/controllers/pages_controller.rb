@@ -15,7 +15,7 @@ class PagesController < ApplicationController
       @gas_seller = 'error'
       @gas_buyer = 'error'
     end
-    
+
     if user_signed_in?
       @nfts = current_user.nfts
       @watchlist_nfts = current_user.watchlist_nfts
@@ -37,6 +37,14 @@ class PagesController < ApplicationController
     rescue
       @gas_seller = 'error'
       @gas_buyer = 'error'
+    end
+
+    if user_signed_in?
+      @watchlist_nfts = current_user.watchlist_nfts
+      @collections = current_user.watchlist_collections
+    else
+      @watchlist_nfts = Nft.last(5)
+      @collections = Collection.first(5)
     end
   end
 

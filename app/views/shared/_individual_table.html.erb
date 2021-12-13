@@ -1,0 +1,29 @@
+<tr>
+  <th scope="row">
+    <div class="avatar">
+      <% unless nft.image_url.nil? %>
+        <%= image_tag nft.image_url, class: "avatar", alt: "avatar"%>
+      <% end %>
+    </div>
+  </th>
+  <td>
+    <div class="text-left">
+      <p class="nft-name"><%=nft.name ? nft.name : "UNKNOWN"%></p>
+    </div>
+  </td>
+  <td>
+    <div class="text-center">
+      <p><%= nft.collection.floor_price %></p>
+    </div>
+  </td>
+  <td>
+    <div class="text-center">
+      <p><%= '%.2f' % (nft.last_sale_eth_price/10**18) %></p>
+    </div>
+  </td>
+  <td>
+    <div class="text-center">
+      <p><%= '%.2f' % (nft.highest_bid_eth_price/10**18) %></p>
+    </div>
+  </td>
+</tr>
