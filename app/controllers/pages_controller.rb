@@ -15,7 +15,7 @@ class PagesController < ApplicationController
       @gas_seller = 'error'
       @gas_buyer = 'error'
     end
-
+    
     if user_signed_in?
       @nfts = current_user.nfts
       @watchlist_nfts = current_user.watchlist_nfts

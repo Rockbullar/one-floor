@@ -1,3 +1,4 @@
+require 'pry-byebug'
 class Opensea
   def initialize(wallet_id)
     @base_url = 'https://api.opensea.io/api/v1'
@@ -16,26 +17,29 @@ class Opensea
     nft_array = port_parsed["assets"]
 
     nft_array.map do |api_nft|
-      nft = Nft.find_or_create_by!(
-        token_id: api_nft["token_id"],
-        contract_id: api_nft["asset_contract"]["address"],
-        collection: retrieve_collection(api_nft["collection"]["slug"])
-      )
+      x = retrieve_collection(api_nft["collection"]["slug"])
+      unless x.nil?
+        nft = Nft.find_or_create_by!(
+          token_id: api_nft["token_id"],
+          contract_id: api_nft["asset_contract"]["address"],
+          collection: x
+        )
 
-      nft.image_url ||= api_nft["image_url"]
-      nft.name ||= api_nft["name"]
-      nft.slug ||= api_nft["collection"]["slug"]
-      nft.permalink ||= api_nft["permalink"]
-      # nft.twitter_url ||= "https://twitter.com/#{api_nft['collection']['twitter_username']}"
-      # nft.discord_url ||= api_nft["collection"]["discord_url"]
+        nft.image_url ||= api_nft["image_url"]
+        nft.name ||= api_nft["name"]
+        nft.slug ||= api_nft["collection"]["slug"]
+        nft.permalink ||= api_nft["permalink"]
+        # nft.twitter_url ||= "https://twitter.com/#{api_nft['collection']['twitter_username']}"
+        # nft.discord_url ||= api_nft["collection"]["discord_url"]
 
-      if User.find_by(wallet_id: @wallet_id)
-        nft.user ||= User.find_by(wallet_id: @wallet_id)
+        if User.find_by(wallet_id: @wallet_id)
+          nft.user ||= User.find_by(wallet_id: @wallet_id)
+        end
+
+        nft.last_sale_eth_price = api_nft["last_sale"].nil? ? 0 : api_nft["last_sale"]["total_price"]
+        nft.highest_bid_eth_price = retrieve_highest_bid(nft)
+        nft.save!
       end
-
-      nft.last_sale_eth_price = api_nft["last_sale"].nil? ? 0 : api_nft["last_sale"]["total_price"]
-      nft.highest_bid_eth_price = retrieve_highest_bid(nft)
-      nft.save!
     end
   end
 
@@ -53,7 +57,7 @@ class Opensea
     unless bid_parsed["orders"].empty?
       order_arr = bid_parsed["orders"]
       highest_bid = order_arr.max_by do |bid|
-        bid["current_price"]
+        bid["current_price"].to_f
       end
 
       highest_bid_eth_price = highest_bid["current_price"].to_f
@@ -72,17 +76,21 @@ class Opensea
     project = Collection.find_or_create_by!(
       slug: slug
     )
+    begin
+      project.name ||= collection["collection"]["primary_asset_contracts"][0]["name"]
+      project.description ||= collection["collection"]["primary_asset_contracts"][0]["description"]
+      project.contract_id ||= collection["collection"]["primary_asset_contracts"][0]["address"]
+      project.twitter_username ||= collection["collection"]["twitter_username"]
+      project.image_url ||= collection["collection"]["featured_image_url"]
+      project.discord_url ||= collection["collection"]["discord_url"]
+      project.twitter_url ||= "https://twitter.com/#{collection['collection']['twitter_username']}"
+      project.floor_price = collection["collection"]["stats"]["floor_price"]
+    rescue
+      return nil
+    else
+      project.save!
+    end
 
-    project.name ||= collection["collection"]["primary_asset_contracts"][0]["name"]
-    project.description ||= collection["collection"]["primary_asset_contracts"][0]["description"]
-    project.contract_id ||= collection["collection"]["primary_asset_contracts"][0]["address"]
-    project.twitter_username ||= collection["collection"]["twitter_username"]
-    project.image_url ||= collection["collection"]["featured_image_url"]
-    project.discord_url ||= collection["collection"]["discord_url"]
-    project.twitter_url ||= "https://twitter.com/#{collection['collection']['twitter_username']}"
-    project.floor_price = collection["collection"]["stats"]["floor_price"]
-
-    project.save!
     return project
   end
 
