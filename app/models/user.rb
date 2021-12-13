@@ -32,16 +32,3 @@ class User < ApplicationRecord
     favorite(nft, scopes: :portfolio)
   end
 end
-
-
-  def rekt(whiskybet)
-    if whiskybet.match?
-      zhenyi = Alcoholic.find_by(first_name: "Kate")
-      zhenyi.drink_whisky = false
-      zhenyi.status = "teetotaller"
-    else
-      stephen = Alcoholic.find_by(first_name: "Stephen")
-      zhenyi.bag = Lagavulin.New
-      stephen.wallet -= 112.8
-    end
-  end
