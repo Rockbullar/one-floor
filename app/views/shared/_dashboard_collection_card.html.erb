@@ -11,17 +11,17 @@
   <div class="row mx-0" style="height: 20%" id="bottom row">
     <div class="col-5">
       <div class='d-flex align-items-center justify-content-around my-2'>
-        <a href=<%=collection.twitter_url%> target="_blank" class="mx-1"><i class="fab fa-twitter text-grey" style="color:grey"></i></a>
-        <a href="https://etherscan.io/address/<%=collection.contract_id%>" target="_blank" class="mx-1"><i class="fas fa-globe-americas" style="color:grey"></i></a>
-        <a href=<%=collection.discord_url%> target="_blank" class="mx-1"><i class="fab fa-discord" style="color:grey"></i></a>
+        <a href=<%=collection.twitter_url%> target="_blank"><i class="fab fa-twitter text-grey" style="color:grey"></i></a>
+        <a href="https://etherscan.io/address/<%=collection.contract_id%>" target="_blank"><i class="fas fa-globe-americas" style="color:grey"></i></a>
+        <a href=<%=collection.discord_url%> target="_blank"><i class="fab fa-discord" style="color:grey"></i></a>
       </div>
     </div>
     <div class="col-7 pt-2">
       <div class="d-flex justify-content-between my-auto">
-        <button type="button" class="btn h-25 text-light p-1" style="width: 47%; font-size: 0.6rem; background-color: rgb(52,92,159); border-radius: 12px;">
+        <button type="button" class="btn text-light p-1" style="width: 47%; font-size: 0.6rem; background-color: rgb(52,92,159); border-radius: 12px;">
           <p class="m-0">Supply: <%= collection.total_supply ? collection.total_supply : "N/A"  %></p>
         </button>
-        <button type="button" class="btn h-25 text-light p-1" style="width: 47%; font-size: 0.6rem; background-color: rgb(52,92,159); border-radius: 12px;">
+        <button type="button" class="btn text-light p-1" style="width: 47%; font-size: 0.6rem; background-color: rgb(52,92,159); border-radius: 12px;">
           <p class="m-0">Owners: <%= collection.num_owners ? collection.num_owners : "N/A"  %></p>
         </button>
       </div>

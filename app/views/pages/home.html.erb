@@ -32,8 +32,8 @@
         <div class="black-card-bg mx-auto pt-6 tab-pane fade show active" id="pills-collection" style="background-color: #3b3b3b; overflow-y: scroll; height:75vh;">
           <div class="pt-3">
             <% @collections.each do |collection| %>
-          <%= render 'shared/dashboard_collection_card', collection: collection%>
-        <% end %>
+              <%= render 'shared/dashboard_collection_card', collection: collection%>
+            <% end %>
           </div>
         </div>
         <div class="black-card-bg mx-auto pt-6 tab-pane fade" id="pills-individual" style="background-color: #3b3b3b; overflow-y: scroll; height:75vh;">
