@@ -11,3 +11,11 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+// a:hover {
+//   text-decoration: none;
+// }
