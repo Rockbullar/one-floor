@@ -4,7 +4,7 @@ require "typhoeus"
 require "nokogiri"
 
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
+  skip_before_action :authenticate_user!, only: [ :home, :watchlist ]
 
   def home
 
@@ -28,6 +28,16 @@ class PagesController < ApplicationController
 
     articles_service = Articles.new
     @articles = articles_service.call
+  end
+
+  def watchlist
+    begin
+      @gas_seller = opengasscraper[4][0].to_f
+      @gas_buyer = opengasscraper[5][0].to_f
+    rescue
+      @gas_seller = 'error'
+      @gas_buyer = 'error'
+    end
   end
 
   private
