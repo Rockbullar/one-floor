@@ -70,3 +70,6 @@ gem 'acts_as_favoritor'
 
 #For Twitter use
 gem 'typhoeus'
+
+#To Scrape Opensea gas price
+gem 'nokogiri'
