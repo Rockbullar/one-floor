@@ -1,5 +1,5 @@
 # service object that calls twitter api newsapi
-
+require 'date'
 class Articles
   def initialize
     @twitter_token = ENV['TWITTER_BEARER_TOKEN']
@@ -20,6 +20,7 @@ class Articles
   def call_twitter_api
     query = "(#BoredApeyc OR #CreatureNFT) -is:retweet"
     url = "https://api.twitter.com/2/tweets/search/recent"
+    date_a = DateTime.now()
 
     query_params = {
       "query": query,
@@ -47,14 +48,13 @@ class Articles
       author = results["includes"]["users"].find do |user|
         user["id"] == author_id
       end
-
       username = author["username"]
-
       {
         image_url: author["profile_image_url"],
         text: tweet["text"][0..50] + "...",
         link: "https://twitter.com/#{username}/status/#{tweet["id"]}",
-        source: username
+        source: username,
+        timestamp: ((Time.parse("#{date_a}\n\n") - Time.parse(tweet["created_at"]))/3600).to_i
       }
     end
   end
@@ -64,6 +64,7 @@ class Articles
     today = Date.today
     date_from = today.strftime('%Y-%m-%d')
     date_to = today.strftime('%Y-%m-%d')
+    date_a = DateTime.now()
 
     url = "#{@newsapi_base_url}"\
           "q=+#{keyword}&"\
@@ -80,12 +81,9 @@ class Articles
         image_url: article["urlToImage"],
         text: article["title"][0..50],
         link: article["url"],
-        source: article["source"]["name"]
+        source: article["source"]["name"],
+        timestamp: ((Time.parse("#{date_a}\n\n") - Time.parse(article["publishedAt"]))/3600).to_i
       }
     end
   end
 end
-
-# usage example
-# call both twitter api and newsapi
-# News.new.call
