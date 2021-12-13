@@ -6,8 +6,23 @@
   </div>
 </div>
 
-
-
+<div class="marquee-container">
+  <div class="scrolling">
+    <%= render "shared/nft_individual_card", nft: @watchlist_nfts.first %>
+  </div>
+  <div class="scrolling">
+    <%= render "shared/nft_individual_card", nft: @watchlist_nfts.second %>
+  </div>
+  <div class="scrolling">
+    <%= render "shared/nft_individual_card", nft: @watchlist_nfts.first %>
+  </div>
+  <div class="scrolling">
+    <%= render "shared/nft_individual_card", nft: @watchlist_nfts.first %>
+  </div>
+  <div class="scrolling">
+    <%= render "shared/nft_individual_card", nft: @watchlist_nfts.first %>
+  </div>
+</div>
 <!--
 <% @watchlist_nfts.each do |nft| %>
   <%= render "shared/nft_individual_card", nft: nft %></a>
@@ -27,23 +42,6 @@
     <li data-target="#demo" data-slide-to="2"></li>
   </ul> %>
 
-      <div class="marquee-container">
-          <div class="scrolling">
-            <%= render "shared/nft_individual_card", nft: @watchlist_nfts.first %>
-          </div>
-          <div class="scrolling">
-            <%= render "shared/nft_individual_card", nft: @watchlist_nfts.second %>
-          </div>
-          <div class="scrolling">
-            <%= render "shared/nft_individual_card", nft: @watchlist_nfts.first %>
-          </div>
-          <div class="scrolling">
-            <%= render "shared/nft_individual_card", nft: @watchlist_nfts.first %>
-          </div>
-          <div class="scrolling">
-            <%= render "shared/nft_individual_card", nft: @watchlist_nfts.first %>
-        </div>
-      </div>
 
 
   <!-- Left and right controls -->
