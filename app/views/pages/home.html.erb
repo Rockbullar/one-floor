@@ -8,10 +8,13 @@
           </li>
         </ul>
       </div>
-      <div class="black-card-bg pt-2" style="background-color: #3b3b3b; overflow-y: scroll; height: 75vh;">
-        <% @collections.each do |collection| %>
-          <%= render 'shared/dashboard_collection_card', collection: collection%>
-        <% end %>
+      <div class="black-card-bg" style="background-color: #3b3b3b; overflow-y: scroll; height: 75vh;">
+        <div class="nft-cards pt-3 w-100">
+          <%= render @nfts %>
+          <%# @nfts.each do |nft| %>
+            <%#= render "shared/nft_individual_card" %></a>
+          <%# end %>
+        </div>
       </div>
     </div>
     <div class="col-4">
@@ -27,13 +30,10 @@
       </div>
       <div class="tab-content" id="pills-tabContent">
         <div class="black-card-bg mx-auto pt-6 tab-pane fade show active" id="pills-collection" style="background-color: #3b3b3b; overflow-y: scroll; height:75vh;">
-          <div class="nft-cards pt-3 w-100">
-            <% @collections.each do |nft_collection| %>
-              <%# <a class="flex-grow-1" href="#"> %>
-              <%= render "shared/nft_collection_card", nft_collection: nft_collection %>
-              <%#= render partial: "shared/nft_collection_card", locals: { nft_collection: nft_collection} %>
-              <%# </a> %>
-            <% end %>
+          <div class="pt-3">
+            <% @collections.each do |collection| %>
+          <%= render 'shared/dashboard_collection_card', collection: collection%>
+        <% end %>
           </div>
         </div>
         <div class="black-card-bg mx-auto pt-6 tab-pane fade" id="pills-individual" style="background-color: #3b3b3b; overflow-y: scroll; height:75vh;">
