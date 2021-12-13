@@ -28,16 +28,16 @@
 }
 
 .scrolling {
-  animation: marquee 2s linear infinite;
+  animation: marquee 0s linear infinite;
   display: inline-block;
   padding-right: 10px;
 }
 
-// @keyframes marquee {
-//   from {
-//     transform: translateX(-100%);
-//   }
-//   to {
-//     transform: translateX(100%);
-//   }
-// }
+@keyframes marquee {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}

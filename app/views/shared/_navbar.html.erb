@@ -10,14 +10,14 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse bg-transparent" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
         <h5 class='my-auto'>ETH: </h5> <h5 class="ethprice my-auto" id="info"></h5> <h5 class="my-auto"> USD</h5>
       </li>
-      <li class="nav-item active mx-4 d-flex" style={color:white}>
+      <li class="nav-item active mx-4 d-flex">
         <h5 class='my-auto'>Seller Gas: </h5> <h5 class="gasprice my-auto"> <%= @gas_seller %> </h5> <h5 class="my-auto"> USD</h5>
       </li>
-      <li class="nav-item active mx-4 d-flex" style={color:white}>
+      <li class="nav-item active mx-4 d-flex">
         <h5 class='my-auto'>Buyer Gas: </h5> <h5 class="gasprice my-auto"> <%= @gas_buyer %> </h5> <h5 class="my-auto"> USD</h5>
       </li>
       <% if user_signed_in? %>
@@ -29,7 +29,7 @@
         </li>
       <% else %>
         <li class="nav-item mx-4">
-          <button type="button" class="btn btn-light">  <%= link_to "Login", new_user_session_path, class: "nav-link", data: { turbolinks: false }%></button>
+          <button type="button" class="btn btn-light">  <%= link_to "Connect to Wallet", new_user_session_path, class: "nav-link", data: { turbolinks: false }%></button>
         </li>
       <% end %>
     </ul>
