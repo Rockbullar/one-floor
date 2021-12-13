@@ -13,7 +13,7 @@ const getEthData = async () => {
 
 
 const fetchEth = () => {
-  setInterval(getEthData,1000);
+  setInterval(getEthData,10000);
 };
 
 
