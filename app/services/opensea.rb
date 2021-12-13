@@ -42,6 +42,33 @@ class Opensea
     end
   end
 
+  def self.create_or_find_collection(slug)
+    url = URI("https://api.opensea.io/api/v1/collection/#{slug}")
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    request = Net::HTTP::Get.new(url)
+    response = http.request(request)
+    collection = JSON.parse(response.read_body)
+    project = Collection.find_or_create_by!(
+      slug: slug
+    )
+    begin
+      project.name ||= collection["collection"]["primary_asset_contracts"][0]["name"]
+      project.description ||= collection["collection"]["primary_asset_contracts"][0]["description"]
+      project.contract_id ||= collection["collection"]["primary_asset_contracts"][0]["address"]
+      project.twitter_username ||= collection["collection"]["twitter_username"]
+      project.image_url ||= collection["collection"]["featured_image_url"]
+      project.discord_url ||= collection["collection"]["discord_url"]
+      project.twitter_url ||= "https://twitter.com/#{collection['collection']['twitter_username']}"
+      project.floor_price = collection["collection"]["stats"]["floor_price"]
+    rescue
+      return nil
+    else
+      project.save!
+    end
+    project
+  end
+
   private
 
   def retrieve_highest_bid(nft)

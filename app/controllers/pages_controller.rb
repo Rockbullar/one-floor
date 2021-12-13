@@ -48,6 +48,14 @@ class PagesController < ApplicationController
     end
   end
 
+  def add_collection_to_watchlist
+    new_collection = Opensea.create_or_find_collection(params['slug'])
+    unless new_collection.nil?
+      current_user.add_to_watchlist(new_collection)
+    end
+    redirect_to root_path
+  end
+
   private
 
   def opengasscraper

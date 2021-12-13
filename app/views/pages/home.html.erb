@@ -30,9 +30,25 @@
       <div class="tab-content" id="pills-tabContent">
         <div class="black-card-bg mx-auto pt-6 tab-pane fade show active" id="pills-collection" style="background-color: #3b3b3b; overflow-y: scroll; height:75vh;">
           <div class="pt-3">
+            <div class="my-2 py-2 px-1 mx-auto" style="background-color:#14142a; height: 150px; width: 350px; border-radius: 12px;">
+              <div id="add-to-watchlist" class="d-flex h-100 flex-column justify-content-center align-items-center">
+                <p>Add collection to watchlist</p>
+                <i class="far fa-plus-square d-block align-middle text-center" style="font-size:2rem;"></i>
+              </div>
+            </div>
+
             <% @collections.each do |collection| %>
               <%= render 'shared/dashboard_collection_card', collection: collection%>
             <% end %>
+            <div class="my-2 py-2 px-1 mx-auto" style="background-color:#14142a; height: 150px; width: 350px; border-radius: 12px;">
+              <div id="watchlist-form">
+                <%= form_with url: "/addcollectionwatchlist", method: :post, remote: true do |f| %>
+                  <%= f.label :slug %>
+                  <%= f.select :slug, ['mutant-ape-yacht-club','boredapeyachtclub','rhymezlikedimez'] %>
+                  <%= f.submit "Add to watchlist" %>
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
         <div class="black-card-bg mx-auto pt-6 tab-pane fade" id="pills-individual" style="background-color: #3b3b3b; overflow-y: scroll; height:75vh;">
