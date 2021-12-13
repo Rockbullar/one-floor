@@ -1,4 +1,3 @@
-require 'pry-byebug'
 class Opensea
   def initialize(wallet_id)
     @base_url = 'https://api.opensea.io/api/v1'
