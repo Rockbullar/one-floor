@@ -1,9 +1,10 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon my-4 pt-0 pb-0" style="background-color: #3b3b3b">
   <div class="d-flex justify-content-start flex-grow-1">
-    <%= link_to "", class: "navbar-brand pl-1"%>
+    <%= link_to root_path do %>
       <%= image_tag(asset_path("floooor.png"), height: 80) %>
+    <% end %>
     <%= link_to "Portfolio", "#", class: "nav-link my-auto text-white" %>
-    <%= link_to "Watchlist", "#", class: "nav-link my-auto text-white" %>
+    <%= link_to "Watchlist", watchlist_path, class: "nav-link my-auto text-white" %>
     <%= link_to "Community", "#", class: "nav-link my-auto text-white" %>
   </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,10 +12,7 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <%# <li class="nav-item active mx-4 d-flex align-content-center" style={color:white}>
-        <h5 class='my-auto'>BTC: </h5> <h5 class="my-auto" id="info"></h5> <h5 class="my-auto"> USD</h5>
-      <li class="nav-item active mx-4 d-flex align-content-center" style={color:white}> %>
-        <h5 class='my-auto'>ETH: </h5> <h5 class="ethprice my-auto" id="info"> <%#= @eth_usd %> </h5> <h5 class="my-auto"> USD</h5>
+        <h5 class='my-auto'>ETH: </h5> <h5 class="ethprice my-auto" id="info"></h5> <h5 class="my-auto"> USD</h5>
       </li>
       <li class="nav-item active mx-4 d-flex" style={color:white}>
         <h5 class='my-auto'>Seller Gas: </h5> <h5 class="gasprice my-auto"> <%= @gas_seller %> </h5> <h5 class="my-auto"> USD</h5>
