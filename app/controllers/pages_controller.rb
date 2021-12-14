@@ -78,7 +78,7 @@ class PagesController < ApplicationController
     end
     redirect_to root_path(anchor: "watchlist-form")
   end
-  
+
   def portfolio
     begin
       @gas_seller = opengasscraper[4][0].to_f
