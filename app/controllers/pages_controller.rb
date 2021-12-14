@@ -28,6 +28,8 @@ class PagesController < ApplicationController
 
     articles_service = Articles.new
     @articles = articles_service.call
+
+    @slugs = Collection.select(:slug).map(&:slug)
   end
 
   def watchlist
@@ -50,10 +52,12 @@ class PagesController < ApplicationController
 
   def add_collection_to_watchlist
     new_collection = Opensea.create_or_find_collection(params['slug'])
-    unless new_collection.nil?
+    if new_collection.nil?
+      flash.alert = "Invalid collection"
+    else
       current_user.add_to_watchlist(new_collection)
     end
-    redirect_to root_path
+    redirect_to root_path(anchor: "watchlist-form")
   end
 
   private

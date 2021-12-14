@@ -44,7 +44,7 @@
               <div id="watchlist-form">
                 <%= form_with url: "/addcollectionwatchlist", method: :post, remote: true do |f| %>
                   <%= f.label :slug %>
-                  <%= f.select :slug, ['mutant-ape-yacht-club','boredapeyachtclub','rhymezlikedimez'] %>
+                  <%= f.select :slug, @slugs %>
                   <%= f.submit "Add to watchlist" %>
                 <% end %>
               </div>
