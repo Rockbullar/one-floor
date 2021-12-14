@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_09_141639) do
+ActiveRecord::Schema.define(version: 2021_12_14_035021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,20 @@ ActiveRecord::Schema.define(version: 2021_12_09_141639) do
     t.float "floor_price"
     t.integer "num_owners"
     t.string "twitter_url"
+    t.float "one_day_volume"
+    t.float "one_day_change"
+    t.float "one_day_sales"
+    t.float "one_day_average_price"
+    t.float "seven_day_volume"
+    t.float "seven_day_change"
+    t.float "seven_day_sales"
+    t.float "seven_day_average_price"
+    t.float "thirty_day_volume"
+    t.float "thirty_day_change"
+    t.float "thirty_day_sales"
+    t.float "thirty_day_average_price"
+    t.float "total_sales"
+    t.float "listed"
   end
 
   create_table "favorites", force: :cascade do |t|
