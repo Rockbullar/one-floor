@@ -25,9 +25,11 @@ class PagesController < ApplicationController
       @watchlist_nfts = Nft.last(5)
       @collections = Collection.first(5)
     end
-
+    @all_collections = Collection.all
     articles_service = Articles.new
     @articles = articles_service.call
+
+    @slugs = Collection.select(:slug).map(&:slug)
   end
 
   def watchlist
@@ -49,6 +51,16 @@ class PagesController < ApplicationController
     end
   end
 
+  def add_collection_to_watchlist
+    new_collection = Opensea.create_or_find_collection(params['slug'])
+    if new_collection.nil?
+      flash.alert = "Invalid collection"
+    else
+      current_user.add_to_watchlist(new_collection)
+    end
+    redirect_to root_path(anchor: "watchlist-form")
+  end
+  
   def portfolio
     begin
       @gas_seller = opengasscraper[4][0].to_f
