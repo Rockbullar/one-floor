@@ -1,0 +1,30 @@
+<div class="my-2 py-2 px-1 mx-auto" style="background-color:#14142a; height: 124px; width: 300px; border-radius: 12px;">
+  <div class="row mx-0" style="height: 75%;" id="top row">
+    <div class="col-5">
+      <%= image_tag collection.image_url, class: "d-block mx-auto", style: "height: 75px; width: 75px; border-radius: 12px;" %>
+    </div>
+    <div class="col-7 d-flex flex-column justify-content-between align-items-center">
+      <p class="pl-1 mb-0 pt-2" style="font-size: 13px; font-weight-bold;"><%= collection.name %></p>
+      <button type="button" class="pt-1 pb-3 btn mb-2 w-35 text-light" style="height: 30px; background-color:darkslateblue; border-radius: 12px; font-size: 1.00rem">Floor: <strong><%=collection.floor_price%></strong> <i class="fab fa-ethereum"></i></button>
+    </div>
+  </div>
+  <div class="row mx-0" style="height: 8%" id="bottom row">
+    <div class="col-5 px-2">
+      <div class='d-flex align-items-center justify-content-around'>
+        <a href=<%=collection.twitter_url%> target="_blank"><i class="fab fa-twitter text-grey" style="color:grey"></i></a>
+        <a href="https://etherscan.io/address/<%=collection.contract_id%>" target="_blank"><i class="fas fa-globe-americas" style="color:grey"></i></a>
+        <a href=<%=collection.discord_url%> target="_blank"><i class="fab fa-discord" style="color:grey"></i></a>
+      </div>
+    </div>
+    <div class="col-7">
+      <div class="d-flex justify-content-between my-auto">
+        <button type="button" class="btn text-light p-1" style="width: 60%; height: 10%; font-size: 0.6rem; background-color: rgb(52,92,159); border-radius: 12px;">
+          <p class="m-0">Supply: <%= collection.total_supply ? collection.total_supply : "N/A"  %></p>
+        </button>
+        <button type="button" class="btn text-light p-1" style="width: 60%; height: 10%; font-size: 0.6rem; background-color: rgb(52,92,159); border-radius: 12px;">
+          <p class="m-0">Owners: <%= collection.num_owners ? collection.num_owners : "N/A"  %></p>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="justify-content-center align-self-center" style="height:50vh;">
+  <div class="d-flex-column-container">
+
+    <!--Carousel Wrapper-->
+    <div id="carousel-with-slides" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+    <!--Controls-->
+    <div class="text-right mb-3">
+      <div class="mx-0" style="position: absolute; top: 15%; z-index: 5; display: flex; justify-content: space-between; width: 100%;">
+        <a class="btn btn-outline-secondary prev" href="#carousel-with-slides" data-slide="prev" title="Previous">
+          <i class="fa fa-lg fa-chevron-left"></i>
+        </a>
+        <a class="btn btn-outline-secondary next" href="#carousel-with-slides" data-slide="next" title="Next">
+          <i class="fa fa-lg fa-chevron-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <!--/.Controls-->
+
+    <!--Slides-->
+      <div class="d-flex carousel-inner mb-3" role="listbox">
+    <!--First slide-->
+        <div class="carousel-item active">
+
+          <% @collections.sample(4).each do |collection| %>
+            <div class="col-md-3" style="float:left">
+              <div class="mb-2" style="overflow:hidden; border:0; height:300px;">
+                <div class="nft">
+                    <%= render 'shared/landing_nft_collection_card', collection: collection%>
+                </div>
+              </div>
+            </div>
+          <% end  %>
+
+        </div>
+    <!--/.First slide-->
+
+    <!--Second slide-->
+        <div class="carousel-item">
+           <% @collections.sample(4).each do |collection| %>
+            <div class="col-md-3" style="float:left">
+              <div class="mb-2" style="overflow:hidden; border:0; height:300px;">
+                <div class="nft">
+                    <%= render 'shared/landing_nft_collection_card', collection: collection%>
+                </div>
+              </div>
+            </div>
+          <% end  %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
