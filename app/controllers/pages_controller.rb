@@ -25,7 +25,7 @@ class PagesController < ApplicationController
       @watchlist_nfts = Nft.last(5)
       @collections = Collection.first(5)
     end
-
+    @all_collections = Collection.all
     articles_service = Articles.new
     @articles = articles_service.call
 
