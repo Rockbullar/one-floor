@@ -29,6 +29,20 @@ ActiveRecord::Schema.define(version: 2021_12_14_083334) do
     t.float "floor_price"
     t.integer "num_owners"
     t.string "twitter_url"
+    t.float "one_day_volume"
+    t.float "one_day_change"
+    t.float "one_day_sales"
+    t.float "one_day_average_price"
+    t.float "seven_day_volume"
+    t.float "seven_day_change"
+    t.float "seven_day_sales"
+    t.float "seven_day_average_price"
+    t.float "thirty_day_volume"
+    t.float "thirty_day_change"
+    t.float "thirty_day_sales"
+    t.float "thirty_day_average_price"
+    t.float "total_sales"
+    t.float "listed"
   end
 
   create_table "favorites", force: :cascade do |t|
