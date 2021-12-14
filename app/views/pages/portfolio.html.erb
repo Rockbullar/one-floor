@@ -1,0 +1,22 @@
+<div class="checker">
+  <div class="mx-auto pt-6 tab-pane" style="background-color: #3b3b3b; color: white; overflow-y: scroll; height:75vh;">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col" class="text-left">Collection</th>
+          <th scope="col" class="text-center">!Floor Price</th>
+          <th scope="col" class="text-center">Last Sale ETH Price</th>
+          <th scope="col" class="text-center">Highest Bid ETH Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <div class="nft-cards pt-3 w-100">
+          <% @nfts.each do |nft| %>
+            <%= render "shared/individual_table", nft: nft %>
+          <% end %>
+        </div>
+      </tbody>
+    </table>
+  </div>
+</div>

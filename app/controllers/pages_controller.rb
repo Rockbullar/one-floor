@@ -31,6 +31,7 @@ class PagesController < ApplicationController
   end
 
   def watchlist
+
     begin
       @gas_seller = opengasscraper[4][0].to_f
       @gas_buyer = opengasscraper[5][0].to_f
@@ -45,6 +46,22 @@ class PagesController < ApplicationController
     else
       @watchlist_nfts = Nft.last(5)
       @collections = Collection.first(5)
+    end
+  end
+
+  def portfolio
+    begin
+      @gas_seller = opengasscraper[4][0].to_f
+      @gas_buyer = opengasscraper[5][0].to_f
+    rescue
+      @gas_seller = 'error'
+      @gas_buyer = 'error'
+    end
+
+    if user_signed_in?
+      @nfts = current_user.nfts
+    else
+      @nfts = Nft.first(5)
     end
   end
 
