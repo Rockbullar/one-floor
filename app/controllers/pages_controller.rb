@@ -33,6 +33,7 @@ class PagesController < ApplicationController
   end
 
   def watchlist
+
     begin
       @gas_seller = opengasscraper[4][0].to_f
       @gas_buyer = opengasscraper[5][0].to_f
@@ -58,6 +59,22 @@ class PagesController < ApplicationController
       current_user.add_to_watchlist(new_collection)
     end
     redirect_to root_path(anchor: "watchlist-form")
+  end
+  
+  def portfolio
+    begin
+      @gas_seller = opengasscraper[4][0].to_f
+      @gas_buyer = opengasscraper[5][0].to_f
+    rescue
+      @gas_seller = 'error'
+      @gas_buyer = 'error'
+    end
+
+    if user_signed_in?
+      @nfts = current_user.nfts
+    else
+      @nfts = Nft.first(5)
+    end
   end
 
   private

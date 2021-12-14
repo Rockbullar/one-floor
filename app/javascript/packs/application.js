@@ -24,14 +24,12 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import { initMetamask} from '../plugins/init_metamask';
 import { fetchEth } from '../plugins/init_ethprice';
-import { showAddWatchlistCollectionForm } from '../plugins/init_add_to_watchlist'
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   initMetamask();
   fetchEth();
-  showAddWatchlistCollectionForm();
 });
 
 import "controllers"
