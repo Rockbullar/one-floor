@@ -19,7 +19,7 @@
   <td>
     <div class="text-center">
       <% unless nft_collection.one_day_volume.nil? || nft_collection.one_day_sales.nil?%>
-      <p><%= ((nft_collection.one_day_volume/nft_collection.one_day_sales) - nft_collection.floor_price) / nft_collection.floor_price * 100 %>%</p>
+      <p><%= '%.2f' % (((nft_collection.one_day_volume/nft_collection.one_day_sales) - nft_collection.floor_price) / nft_collection.floor_price * 100) %>%</p>
       <% end %>
     </div>
   </td>
@@ -27,14 +27,14 @@
     <div class="text-center">
       <p><%= nft_collection.total_supply ? nft_collection.total_supply : "N/A" %> / <%= nft_collection.num_owners ? nft_collection.num_owners : "N/A"  %></p>
       <% unless nft_collection.total_supply.nil? || nft_collection.num_owners.nil?%>
-      <p><%= nft_collection.total_supply/nft_collection.num_owners%></p>
+      <p><%= '%.2f' % (nft_collection.total_supply/nft_collection.num_owners) %></p>
       <% end %>
     </div>
   </td>
     <td>
     <div class="text-center">
       <% unless nft_collection.total_supply.nil? || nft_collection.listed.nil?%>
-      <p><%= nft_collection.listed/nft_collection.total_supply * 100%>%</p>
+      <p><%= '%.2f' % (nft_collection.listed/nft_collection.total_supply * 100) %>%</p>
       <% end %>
     </div>
   </td>

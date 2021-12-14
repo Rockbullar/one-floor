@@ -19,10 +19,14 @@
     <div class="col-7 pt-2">
       <div class="d-flex justify-content-between my-auto">
         <button type="button" class="btn text-light p-1" style="width: 47%; font-size: 0.5rem; background-color: rgb(52,92,159); border-radius: 12px;">
+        <% unless nft.last_sale_eth_price.nil? %>
           <p class="mb-0">Last sale: <%= '%.2f' % (nft.last_sale_eth_price/10**18) %> <i class="fab fa-ethereum"></i></p>
+        <% end %>
         </button>
         <button type="button" class="btn text-light p-1" style="width: 47%; font-size: 0.5rem; background-color: rgb(52,92,159); border-radius: 12px;">
+        <% unless nft.highest_bid_eth_price.nil? %>
           <p class="mb-0">Highest bid: <%= '%.2f' % (nft.highest_bid_eth_price/10**18) %> <i class="fab fa-ethereum"></i></p>
+        <% end %>
         </button>
       </div>
     </div>
