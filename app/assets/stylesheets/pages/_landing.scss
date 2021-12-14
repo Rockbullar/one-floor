@@ -21,23 +21,3 @@
 }
 
 // <%= image_tag(asset_path("floorbanner.jpeg")) %>
-
-.marquee-container {
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.scrolling {
-  animation: marquee 0s linear infinite;
-  display: inline-block;
-  padding-right: 10px;
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(100%);
-  }
-}
