@@ -61,6 +61,8 @@ class Opensea
       project.discord_url ||= collection["collection"]["discord_url"]
       project.twitter_url ||= "https://twitter.com/#{collection['collection']['twitter_username']}"
       project.floor_price = collection["collection"]["stats"]["floor_price"].to_f
+      project.num_owners = collection["collection"]["stats"]["num_owners"].to_f
+      project.total_supply = collection["collection"]["stats"]["total_supply"].to_f
       project.one_day_volume = collection["collection"]["stats"]["one_day_volume"].to_f
       project.one_day_change = collection["collection"]["stats"]["one_day_change"].to_f
       project.one_day_sales = collection["collection"]["stats"]["one_day_sales"].to_f
@@ -143,6 +145,8 @@ class Opensea
       project.discord_url ||= collection["collection"]["discord_url"]
       project.twitter_url ||= "https://twitter.com/#{collection['collection']['twitter_username']}"
       project.floor_price = collection["collection"]["stats"]["floor_price"].to_f
+      project.num_owners = collection["collection"]["stats"]["num_owners"].to_f
+      project.total_supply = collection["collection"]["stats"]["total_supply"].to_f
       project.one_day_volume = collection["collection"]["stats"]["one_day_volume"].to_f
       project.one_day_change = collection["collection"]["stats"]["one_day_change"].to_f
       project.one_day_sales = collection["collection"]["stats"]["one_day_sales"].to_f
