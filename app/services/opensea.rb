@@ -74,8 +74,7 @@ class Opensea
       project.thirty_day_sales = collection["collection"]["stats"]["thirty_day_sales"].to_f
       project.thirty_day_average_price = collection["collection"]["stats"]["thirty_day_average_price"].to_f
       project.total_sales = collection["collection"]["stats"]["total_sales"].to_f
-      project.listed = listedcountscraper(slug)
-
+      project.listed = self.listedcountscraper(slug)
     rescue
       return nil
     else
@@ -134,6 +133,7 @@ class Opensea
     project = Collection.find_or_create_by!(
       slug: slug
     )
+    project.listed = listedcountscraper(slug)
     begin
       project.name ||= collection["collection"]["primary_asset_contracts"][0]["name"]
       project.description ||= collection["collection"]["primary_asset_contracts"][0]["description"]
@@ -156,18 +156,21 @@ class Opensea
       project.thirty_day_sales = collection["collection"]["stats"]["thirty_day_sales"].to_f
       project.thirty_day_average_price = collection["collection"]["stats"]["thirty_day_average_price"].to_f
       project.total_sales = collection["collection"]["stats"]["total_sales"].to_f
-      project.listed = listedcountscraper(slug)
-
     rescue
       return nil
     else
       project.save!
     end
-
     return project
   end
 
   def listedcountscraper(slug)
+    html_content = URI.open("https://opensea.io/collection/#{slug}?search[sortAscending]=true&search[sortBy]=PRICE&search[toggles][0]=BUY_NOW").read
+    doc = Nokogiri::HTML(html_content)
+    result = doc.search('div.AssetSearchView--results-count').first.text.strip.gsub(/(\,?\D*)/,'').to_f
+  end
+
+  def self.listedcountscraper(slug)
     html_content = URI.open("https://opensea.io/collection/#{slug}?search[sortAscending]=true&search[sortBy]=PRICE&search[toggles][0]=BUY_NOW").read
     doc = Nokogiri::HTML(html_content)
     result = doc.search('div.AssetSearchView--results-count').first.text.strip.gsub(/(\,?\D*)/,'').to_f
