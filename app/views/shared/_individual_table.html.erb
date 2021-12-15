@@ -14,13 +14,13 @@
   </td>
   <td>
     <div class="text-center pt-3 align-items-center">
-      <p><%= nft.collection.floor_price %></p>
+      <p><%= nft.collection.floor_price %><i class="fab fa-ethereum"></i></p>
     </div>
   </td>
   <td>
     <div class="text-center pt-3 align-items-center">
     <% unless nft.last_sale_eth_price.nil? %>
-      <p><%= '%.2f' % (nft.last_sale_eth_price/10**18) %></p>
+      <p><%= '%.2f' % (nft.last_sale_eth_price/10**18) %><i class="fab fa-ethereum"></i></p>
     <% end %>
     </div>
   </td>
@@ -29,6 +29,44 @@
     <% unless nft.highest_bid_eth_price.nil? %>
       <p><%= '%.2f' % (nft.highest_bid_eth_price/10**18) %></p>
     <% end %>
+    </div>
+  </td>
+  <td>
+    <div class="text-center">
+      <p><%= '%.2f' % (nft.collection.one_day_volume) %><i class="fab fa-ethereum"></i></p>
+    </div>
+  </td>
+  <td>
+    <div class="text-center">
+      <p><%= '%.2f' % (nft.collection.one_day_change) %>%</p>
+    </div>
+  </td>
+  <td>
+    <div class="text-center">
+      <p><%= (nft.collection.one_day_sales.to_i) %></p>
+    </div>
+  </td>
+  <td>
+    <div class="text-center">
+      <% unless nft.collection.one_day_volume.nil? || nft.collection.one_day_sales.nil?%>
+      <p><%= '%.2f' % (((nft.collection.one_day_volume/nft.collection.one_day_sales) - nft.collection.floor_price) / nft.collection.floor_price * 100) %>%</p>
+      <% end %>
+    </div>
+  </td>
+  <td>
+    <div class="text-center">
+      <p><%= nft.collection.total_supply ? nft.collection.total_supply : "N/A" %> / <%= nft.collection.num_owners ? nft.collection.num_owners : "N/A"  %></p>
+      <% unless nft.collection.total_supply.nil? || nft.collection.num_owners.nil?%>
+      <p><%= '%.5f' % (nft.collection.total_supply.to_f/nft.collection.num_owners) %></p>
+      <% end %>
+    </div>
+  </td>
+    <td>
+    <div class="text-center">
+      <p><%= nft.collection.listed ? nft.collection.listed : "N/A"  %> / <%= nft.collection.total_supply ? nft.collection.total_supply : "N/A" %></p>
+      <% unless nft.collection.total_supply.nil? || nft.collection.listed.nil?%>
+      <p><%= '%.2f' % (nft.collection.listed/nft.collection.total_supply * 100) %>%</p>
+      <% end %>
     </div>
   </td>
   </div>

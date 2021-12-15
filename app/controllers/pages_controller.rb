@@ -7,7 +7,6 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home, :watchlist, :landing, :portfolio]
 
   def home
-
     begin
       @gas_seller = opengasscraper[4][0].to_f
       @gas_buyer = opengasscraper[5][0].to_f
@@ -28,8 +27,7 @@ class PagesController < ApplicationController
     @all_collections = Collection.all
     articles_service = Articles.new
     @articles = articles_service.call
-
-    @slugs = Collection.select(:slug).map(&:slug)
+    @slugs = Collection.all.map(&:slug)
   end
 
   def watchlist
@@ -50,9 +48,7 @@ class PagesController < ApplicationController
       @collections = Collection.first(5)
     end
 
-    @nfts = Nft.first(5)
-    @watchlist_nfts = Nft.last(5)
-    @collections = Collection.first(5)
+    @watchlist_nfts = Nft.last(5) #remove when watchlist adding is complete
   end
 
   def landing
@@ -95,6 +91,14 @@ class PagesController < ApplicationController
     end
   end
 
+  def update_search
+    @collections = Collection.where("slug ILIKE ?", "%#{params['query']}%")
+
+    respond_to do |format|
+      format.text { render partial: 'shared/dashboard_grouped_collection_cards', locals: { collections: @collections }, formats: [:html] }
+    end
+  end
+
   private
 
   def opengasscraper
@@ -105,5 +109,4 @@ class PagesController < ApplicationController
       result << price.text.strip
     end
   end
-
 end

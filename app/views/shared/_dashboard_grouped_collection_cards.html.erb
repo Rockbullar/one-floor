@@ -1,0 +1,5 @@
+<% collections.each do |collection| %>
+  <%= link_to addcollectionwatchlist_path(slug: collection.slug), method: :post do %>
+    <%= render 'shared/dashboard_collection_card', collection: collection%>
+  <% end %>
+<% end %>

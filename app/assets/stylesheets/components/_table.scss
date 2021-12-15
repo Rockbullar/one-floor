@@ -7,6 +7,19 @@
   // height: 50px;
 }
 
-.toggle-tabs {
-  justify-content: space-between;
+.glass {
+    // background: inherit;
+  background-color: rgba(255, 255, 255, .15);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 10px );
+  -webkit-backdrop-filter: blur( 10px );
+  border-radius: 20px;
+  // border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+th:first-child, td:first-child
+{
+  position:sticky;
+  left:0px;
+  opacity:0.9;
 }
