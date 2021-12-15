@@ -13,28 +13,28 @@
   </td>
   <td>
     <div class="text-center">
-      <p><%= nft_collection.floor_price %></p>
+      <p><%= nft_collection.floor_price %><i class="fab fa-ethereum"></i></p>
     </div>
   </td>
   <td>
     <div class="text-center">
-      <p><%= '%.2f' % (nft_collection.one_day_volume) %><i class="fab fa-ethereum"></i></p>
+      <p><%= '%.2f' % (nft_collection.seven_day_volume) %><i class="fab fa-ethereum"></i></p>
     </div>
   </td>
   <td>
     <div class="text-center">
-      <p><%= '%.2f' % (nft_collection.one_day_change) %>%</p>
+      <p><%= '%.2f' % (nft_collection.seven_day_change) %>%</p>
     </div>
   </td>
   <td>
     <div class="text-center">
-      <p><%= (nft_collection.one_day_sales.to_i) %></i></p>
+      <p><%= (nft_collection.seven_day_sales.to_i) %></i></p>
     </div>
   </td>
   <td>
     <div class="text-center">
-      <% unless nft_collection.one_day_volume.nil? || nft_collection.one_day_sales.nil?%>
-      <p><%= '%.2f' % (((nft_collection.one_day_volume/nft_collection.one_day_sales) - nft_collection.floor_price) / nft_collection.floor_price * 100) %>%</p>
+      <% unless nft_collection.seven_day_volume.nil? || nft_collection.seven_day_sales.nil?%>
+      <p><%= '%.2f' % (((nft_collection.seven_day_volume/nft_collection.seven_day_sales) - nft_collection.floor_price) / nft_collection.floor_price * 100) %>%</p>
       <% end %>
     </div>
   </td>
