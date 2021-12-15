@@ -1,4 +1,20 @@
 <div class="container-fluid">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog mw-100 w-75" role="document">
+      <div class="modal-content glass">
+        <div class="modal-header">
+          <p class="modal-title text-white">Add Collection to Watchlist</p>
+        </div>
+        <div data-controller="watchlist-form">
+          <div class='d-flex justify-content-center my-2'>
+            <input placeholder="Search" data-watchlist-form-target="name" type="text" data-action="keyup->watchlist-form#search">
+          </div>
+          <span class="my-2" data-watchlist-form-target="output">
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="row">
     <div class="col-4">
       <div class="tab-container mx-1 px-2 pb-2" >
@@ -30,35 +46,12 @@
       <div class="tab-content" id="pills-tabContent">
         <div class="glass mx-auto pt-6 tab-pane fade show active" id="pills-collection" style="overflow-y: scroll; height:75vh;">
           <div class="pt-3">
-            <div class="nft-card my-2 py-2 px-1 mx-auto" id='add-watchlist-collection-button' style="height: 150px; width: 350px; border-radius: 12px;">
+            <div class="nft-card my-2 py-2 px-1 mx-auto" id='add-watchlist-collection-button'>
               <div id="add-collection-to-watchlist" class="d-flex h-100 flex-column justify-content-center align-items-center">
                 <p>Add collection to watchlist</p>
                 <button type="button" class="btn text-white" data-toggle="modal" data-target="#exampleModal">
                   <i class="far fa-plus-square d-block align-middle text-center" style="font-size:2rem;"></i>
                 </button>
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog mw-100 w-75" role="document">
-                    <div class="modal-content bg-dark">
-                      <div class="modal-header">
-                        <h5 class="modal-title text-dark" id="exampleModalLabel">Add Collection to Watchlist</h5>
-                      </div>
-                      <div class="modal-body">
-                        <%= form_with url: "/addcollectionwatchlist", method: :post, remote: true do |f| %>
-                          <%= f.label :slug %>
-                          <%= f.select :slug, @slugs %>
-                          <%= f.submit "Add to watchlist" %>
-                        <% end %>
-                      </div>
-                      <div class="row">
-                        <% @all_collections.each do |collection| %>
-                          <div class="col-6">
-                            <%= render 'shared/dashboard_collection_card', collection: collection%>
-                          </div>
-                        <% end %>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
             <% @collections.each do |collection| %>
