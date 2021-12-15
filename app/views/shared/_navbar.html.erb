@@ -1,7 +1,7 @@
-<div class="navbar navbar-expand-sm bg-transparent navbar-lewagon my-4 pt-0 pb-0" style="background-color: #3b3b3b">
+<div class="navbar navbar-expand-sm bg-transparent navbar-lewagon my-4 pt-0 pb-0" style="align-items: center;">
   <div class="d-flex justify-content-start flex-grow-1">
     <%= link_to root_path do %>
-      <%= image_tag(asset_path("floooor.png"), height: 80) %>
+      <%= image_tag(asset_path("floooor.png"), height: 40, style: "transform: scale(2); margin: 0 24px;") %>
     <% end %>
     <%= link_to "Portfolio", portfolio_path, class: "nav-link my-auto text-white" %>
     <%= link_to "Watchlist", watchlist_path, class: "nav-link my-auto text-white" %>
@@ -21,12 +21,12 @@
         <h5 class='my-auto'>Buyer Gas: </h5> <h5 class="gasprice my-auto"> <%= @gas_buyer %> </h5> <h5 class="my-auto"> USD</h5>
       </li>
       <% if user_signed_in? %>
-        <li class="nav-item mx-4">
-          <button type="button" class="btn btn-dark">  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link", data: { turbolinks: false }%></button>
+        <li class="nav-item mx-4" style="margin: 4px 0;">
+          <button type="button" class="btn btn-dark" style="padding: 0;">  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link", data: { turbolinks: false }%></button>
         </li>
       <% else %>
-        <li class="nav-item mx-4">
-          <button type="button" class="btn btn-dark">  <%= link_to "Connect Wallet", new_user_session_path, class: "nav-link", data: { turbolinks: false }%></button>
+        <li class="nav-item mx-4" style="margin: 4px 0;">
+          <button type="button" class="btn btn-dark" style="padding: 0;">  <%= link_to "Connect Wallet", new_user_session_path, class: "nav-link", data: { turbolinks: false }%></button>
         </li>
       <% end %>
     </ul>
