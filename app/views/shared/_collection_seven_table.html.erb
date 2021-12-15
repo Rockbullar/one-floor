@@ -12,34 +12,34 @@
     </div>
   </td>
   <td>
-    <div class="text-center">
+    <div class="text-center pt-3 align-items-center">
       <p><%= nft_collection.floor_price %><i class="fab fa-ethereum"></i></p>
     </div>
   </td>
   <td>
-    <div class="text-center">
+    <div class="text-center pt-3 align-items-center">
       <p><%= '%.2f' % (nft_collection.seven_day_volume) %><i class="fab fa-ethereum"></i></p>
     </div>
   </td>
   <td>
-    <div class="text-center">
+    <div class="text-center pt-3 align-items-center">
       <p><%= '%.2f' % (nft_collection.seven_day_change) %>%</p>
     </div>
   </td>
   <td>
-    <div class="text-center">
+    <div class="text-center pt-3 align-items-center">
       <p><%= (nft_collection.seven_day_sales.to_i) %></i></p>
     </div>
   </td>
   <td>
-    <div class="text-center">
+    <div class="text-center pt-3 align-items-center">
       <% unless nft_collection.seven_day_volume.nil? || nft_collection.seven_day_sales.nil?%>
       <p><%= '%.2f' % (((nft_collection.seven_day_volume/nft_collection.seven_day_sales) - nft_collection.floor_price) / nft_collection.floor_price * 100) %>%</p>
       <% end %>
     </div>
   </td>
   <td>
-    <div class="text-center">
+    <div class="text-center pt-3 align-items-center">
       <p><%= nft_collection.total_supply ? nft_collection.total_supply : "N/A" %> / <%= nft_collection.num_owners ? nft_collection.num_owners : "N/A"  %></p>
       <% unless nft_collection.total_supply.nil? || nft_collection.num_owners.nil?%>
       <p><%= '%.5f' % (nft_collection.total_supply.to_f/nft_collection.num_owners) %></p>
@@ -47,7 +47,7 @@
     </div>
   </td>
     <td>
-    <div class="text-center">
+    <div class="text-center pt-3 align-items-center">
       <p><%= nft_collection.listed ? nft_collection.listed : "N/A"  %> / <%= nft_collection.total_supply ? nft_collection.total_supply : "N/A" %></p>
       <% unless nft_collection.total_supply.nil? || nft_collection.listed.nil?%>
       <p><%= '%.2f' % (nft_collection.listed/nft_collection.total_supply * 100) %>%</p>
