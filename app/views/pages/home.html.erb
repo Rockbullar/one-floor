@@ -3,7 +3,6 @@
     <div class="col-4">
       <div data-controller="hello">
         <input data-hello-target="name" type="text">
-
         <button data-action="click->hello#greet">
           Greet hello controller
         </button>
@@ -56,8 +55,7 @@
                         <h5 class="modal-title text-dark" id="exampleModalLabel">Add Collection to Watchlist</h5>
                       </div>
                       <div data-controller="watchlist-form">
-                        <input data-watchlist-form-target="name" type="text">
-
+                        <input data-watchlist-form-target="name" type="text" data-action="keyup->watchlist-form#search">
                         <button data-action="click->watchlist-form#search">
                           Search
                         </button>
