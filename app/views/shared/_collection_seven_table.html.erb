@@ -18,17 +18,23 @@
   </td>
   <td>
     <div class="text-center">
-      <p><%= '%.2f' % (nft_collection.seven_day_volume) %><i class="fab fa-ethereum"></i></p>
+      <% unless nft_collection.seven_day_volume.nil?%>
+        <p><%= '%.2f' % (nft_collection.seven_day_volume) %><i class="fab fa-ethereum"></i></p>
+      <% end %>
     </div>
   </td>
   <td>
     <div class="text-center">
-      <p><%= '%.2f' % (nft_collection.seven_day_change) %>%</p>
+      <% unless nft_collection.seven_day_change.nil?%>
+        <p><%= '%.2f' % (nft_collection.seven_day_change) %>%</p>
+      <% end %>
     </div>
   </td>
   <td>
     <div class="text-center">
-      <p><%= (nft_collection.seven_day_sales.to_i) %></p>
+      <% unless nft_collection.seven_day_sales.nil?%>
+        <p><%= (nft_collection.seven_day_sales.to_i) %></p>
+      <% end %>
     </div>
   </td>
   <td>
