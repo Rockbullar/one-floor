@@ -50,9 +50,7 @@ class PagesController < ApplicationController
       @collections = Collection.first(5)
     end
 
-    @nfts = Nft.first(5)
-    @watchlist_nfts = Nft.last(5)
-    @collections = Collection.first(5)
+    @watchlist_nfts = Nft.last(5) #remove when watchlist adding is complete
   end
 
   def landing
@@ -105,5 +103,4 @@ class PagesController < ApplicationController
       result << price.text.strip
     end
   end
-
 end
