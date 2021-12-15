@@ -16,3 +16,10 @@
   border-radius: 20px;
   // border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
+
+th:first-child, td:first-child
+{
+  position:sticky;
+  left:0px;
+  opacity:0.9;
+}

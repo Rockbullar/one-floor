@@ -112,14 +112,3 @@ seeded_user_list.each do |user|
     )
   end
 end
-
-# seed watchlist
-User.all.each do |user|
-  6.times do
-    user.add_to_watchlist(Nft.order(Arel.sql('RANDOM()')).first)
-    user.add_to_watchlist(Collection.order(Arel.sql('RANDOM()')).first)
-  end
-  # user.add_to_watchlist(Collection.where(slug: "mutant-ape-yacht-club"))
-  # user.add_to_watchlist(Collection.where(slug: "sandbox"))
-  # user.add_to_watchlist(Collection.where(slug: "cryptopunks"))
-end
