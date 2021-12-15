@@ -7,10 +7,7 @@
         </div>
         <div data-controller="watchlist-form">
           <div class='d-flex justify-content-center my-2'>
-            <input data-watchlist-form-target="name" type="text" data-action="keyup->watchlist-form#search">
-            <button class="text-center" data-action="click->watchlist-form#search">
-              Search
-            </button>
+            <input placeholder="Search" data-watchlist-form-target="name" type="text" data-action="keyup->watchlist-form#search">
           </div>
           <span class="my-2" data-watchlist-form-target="output">
           </span>
@@ -55,24 +52,6 @@
                 <button type="button" class="btn text-white" data-toggle="modal" data-target="#exampleModal">
                   <i class="far fa-plus-square d-block align-middle text-center" style="font-size:2rem;"></i>
                 </button>
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog mw-100 w-75" role="document">
-                    <div class="modal-content bg-dark">
-                      <div class="modal-header">
-                        <h5 class="modal-title text-dark" id="exampleModalLabel">Add Collection to Watchlist</h5>
-                      </div>
-                      <div data-controller="watchlist-form">
-                        <input data-watchlist-form-target="name" type="text" data-action="keyup->watchlist-form#search">
-                        <button data-action="click->watchlist-form#search">
-                          Search
-                        </button>
-
-                        <span data-watchlist-form-target="output">
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
             <% @collections.each do |collection| %>
