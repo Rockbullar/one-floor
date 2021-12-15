@@ -61,6 +61,8 @@ class Opensea
       project.discord_url ||= collection["collection"]["discord_url"]
       project.twitter_url ||= "https://twitter.com/#{collection['collection']['twitter_username']}"
       project.floor_price = collection["collection"]["stats"]["floor_price"].to_f
+      project.num_owners = collection["collection"]["stats"]["num_owners"].to_f
+      project.total_supply = collection["collection"]["stats"]["total_supply"].to_f
       project.one_day_volume = collection["collection"]["stats"]["one_day_volume"].to_f
       project.one_day_change = collection["collection"]["stats"]["one_day_change"].to_f
       project.one_day_sales = collection["collection"]["stats"]["one_day_sales"].to_f
@@ -143,6 +145,8 @@ class Opensea
       project.discord_url ||= collection["collection"]["discord_url"]
       project.twitter_url ||= "https://twitter.com/#{collection['collection']['twitter_username']}"
       project.floor_price = collection["collection"]["stats"]["floor_price"].to_f
+      project.num_owners = collection["collection"]["stats"]["num_owners"].to_f
+      project.total_supply = collection["collection"]["stats"]["total_supply"].to_f
       project.one_day_volume = collection["collection"]["stats"]["one_day_volume"].to_f
       project.one_day_change = collection["collection"]["stats"]["one_day_change"].to_f
       project.one_day_sales = collection["collection"]["stats"]["one_day_sales"].to_f
@@ -165,6 +169,7 @@ class Opensea
   end
 
   def listedcountscraper(slug)
+    puts "getting results from this #{slug}"
     html_content = URI.open("https://opensea.io/collection/#{slug}?search[sortAscending]=true&search[sortBy]=PRICE&search[toggles][0]=BUY_NOW").read
     doc = Nokogiri::HTML(html_content)
     result = doc.search('div.AssetSearchView--results-count').first.text.strip.gsub(/(\,?\D*)/,'').to_f
