@@ -5,9 +5,7 @@ require "nokogiri"
 
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home, :watchlist ]
-
   def home
-
     begin
       @gas_seller = opengasscraper[4][0].to_f
       @gas_buyer = opengasscraper[5][0].to_f
@@ -28,8 +26,7 @@ class PagesController < ApplicationController
     @all_collections = Collection.all
     articles_service = Articles.new
     @articles = articles_service.call
-
-    @slugs = Collection.select(:slug).map(&:slug)
+    @slugs = Collection.all.map(&:slug)
   end
 
   def watchlist
@@ -60,7 +57,7 @@ class PagesController < ApplicationController
     end
     redirect_to root_path(anchor: "watchlist-form")
   end
-  
+
   def portfolio
     begin
       @gas_seller = opengasscraper[4][0].to_f
@@ -74,6 +71,14 @@ class PagesController < ApplicationController
       @nfts = current_user.nfts
     else
       @nfts = Nft.first(5)
+    end
+  end
+
+  def update_search
+    @collections = Collection.where("slug ILIKE ?", "%#{params['query']}%")
+
+    respond_to do |format|
+      format.text { render partial: 'shared/dashboard_grouped_collection_cards', locals: { collections: @collections }, formats: [:html] }
     end
   end
 

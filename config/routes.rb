@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   get 'watchlist', to: 'pages#watchlist'
   post 'addcollectionwatchlist', to: 'pages#add_collection_to_watchlist'
   get 'portfolio', to: 'pages#portfolio'
+  get 'updatesearch', to: 'pages#update_search'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
