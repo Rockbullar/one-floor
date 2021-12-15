@@ -10,3 +10,10 @@
 .toggle-tabs {
   justify-content: space-between;
 }
+
+th:first-child, td:first-child
+{
+  position:sticky;
+  left:0px;
+  opacity:0.9;
+}
