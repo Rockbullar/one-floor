@@ -4,7 +4,7 @@ require "typhoeus"
 require "nokogiri"
 
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home, :watchlist, :landing ]
+  skip_before_action :authenticate_user!, only: [ :home, :watchlist, :landing, :portfolio]
 
   def home
 
