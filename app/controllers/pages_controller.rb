@@ -4,7 +4,7 @@ require "typhoeus"
 require "nokogiri"
 
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home, :watchlist, :landing ]
+  skip_before_action :authenticate_user!, only: [ :home, :watchlist, :landing, :portfolio ]
 
   def home
 
@@ -78,7 +78,7 @@ class PagesController < ApplicationController
     end
     redirect_to root_path(anchor: "watchlist-form")
   end
-  
+
   def portfolio
     begin
       @gas_seller = opengasscraper[4][0].to_f

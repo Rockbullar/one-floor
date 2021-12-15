@@ -5,57 +5,20 @@
     </div>
   </div>
 </div> %>
-    <div class="checker">
-      <div class="tab-container mx-1 px-2 pb-2" >
-        <ul class="nav nav-pills mb-0 justify-content-center" id="pills-tab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link text-white px-2 active" id="pills-collection-tab" href="#pills-collection"  data-toggle="pill" role="tab" aria-selected="true">Collection Watchlist</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white px-2" id="pills-individual-tab" data-toggle="pill" href="#pills-individual" role="tab" aria-selected="false">Individual Watchlist</a>
-          </li>
-        </ul>
-      </div>
-      <div class="tab-content" id="pills-tabContent">
-        <div class="mx-auto pt-6 tab-pane fade show active" id="pills-collection" style="background-color: #3b3b3b; color: white; overflow-y: scroll; height:75vh;">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col" class="text-left">Collection</th>
-                <th scope="col" class="text-center">!Floor Price</th>
-                <th scope="col" class="text-center">Total Supply</th>
-                <th scope="col" class="text-center">Unique Owners</th>
-              </tr>
-            </thead>
-            <tbody>
-              <div class="nft-cards pt-3 w-100">
-                <% @collections.each do |nft_collection| %>
-                  <%= render "shared/collection_table", nft_collection: nft_collection %>
-                <% end %>
-              </div>
-            </tbody>
-          </table>
-        </div>
-        <div class="mx-auto pt-6 tab-pane fade" id="pills-individual" style="background-color: #3b3b3b; color: white; overflow-y: scroll; height:75vh;">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col" class="text-left">Name</th>
-                <th scope="col" class="text-center">!Floor Price</th>
-                <th scope="col" class="text-center">Last Sale ETH Price</th>
-                <th scope="col" class="text-center">Highest Bid ETH Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              <div class="nft-cards pt-3 w-100">
-                <% @watchlist_nfts.each do |nft| %>
-                  <%= render "shared/individual_table", nft: nft %>
-                <% end %>
-              </div>
-            </tbody>
-          </table>
-        </div>
-      </div>
+<div class="checker">
+  <div class="tab-container mx-1 px-2 pb-2" >
+    <ul class="nav nav-pills mb-0 justify-content-center" id="pills-tab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link text-white px-2 active" id="pills-collection-tab" href="#pills-collection"  data-toggle="pill" role="tab" aria-selected="true">Collection Watchlist</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white px-2" id="pills-individual-tab" data-toggle="pill" href="#pills-individual" role="tab" aria-selected="false">Individual Watchlist</a>
+      </li>
+    </ul>
+  </div>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="mx-auto pt-6 tab-pane fade show active" id="pills-collection" style="background-color: #3b3b3b; color: white; overflow-y: scroll; height:75vh;">
+      <%= render "table" %>
     </div>
+  </div>
+</div>
