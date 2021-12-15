@@ -19,12 +19,16 @@
   </td>
   <td>
     <div class="text-center pt-3 align-items-center">
+    <% unless nft.last_sale_eth_price.nil? %>
       <p><%= '%.2f' % (nft.last_sale_eth_price/10**18) %></p>
+    <% end %>
     </div>
   </td>
   <td>
     <div class="text-center pt-3 align-items-center">
+    <% unless nft.highest_bid_eth_price.nil? %>
       <p><%= '%.2f' % (nft.highest_bid_eth_price/10**18) %></p>
+    <% end %>
     </div>
   </td>
   </div>

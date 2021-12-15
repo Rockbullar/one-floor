@@ -93,7 +93,7 @@ Collection.destroy_all
 #   create_collection(collection, contract)
 # end
 
-wallet_array = ['0x21567c4f98450001f75c42d1b259398f0e280c6b', '0xfcfb7c0954f5c82d1c81214560d540897ffd9aec', '0xa23cb68780be74b254a5f7210ec6cf1c76289953']
+wallet_array = ['0x241Af3d9a9959d0E78353Ff26f62A3eB7798202D', '0x740025AB2bF4A38Ca54cd8405f658403aFD36260', '0x98d365a3df9711603dd2ab52bf45b16796336726']
 
 wallet_array.each do |wallet|
   x = Opensea.new(wallet)
@@ -101,7 +101,7 @@ wallet_array.each do |wallet|
 end
 
 # seed user
-seeded_user_list = ['0x241Af3d9a9959d0E78353Ff26f62A3eB7798202D', '0x77DB8C673263d0B48fb8c790458736cF102a3fE3', '0x98d365a3df9711603dd2ab52bf45b16796336726']
+seeded_user_list = ['0x241Af3d9a9959d0E78353Ff26f62A3eB7798202D', '0x740025AB2bF4A38Ca54cd8405f658403aFD36260', '0x98d365a3df9711603dd2ab52bf45b16796336726']
 
 seeded_user_list.each do |user|
   unless User.find_by( wallet_id: user.downcase )
@@ -119,4 +119,7 @@ User.all.each do |user|
     user.add_to_watchlist(Nft.order(Arel.sql('RANDOM()')).first)
     user.add_to_watchlist(Collection.order(Arel.sql('RANDOM()')).first)
   end
+  # user.add_to_watchlist(Collection.where(slug: "mutant-ape-yacht-club"))
+  # user.add_to_watchlist(Collection.where(slug: "sandbox"))
+  # user.add_to_watchlist(Collection.where(slug: "cryptopunks"))
 end
