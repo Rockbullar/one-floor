@@ -1,0 +1,62 @@
+<tr>
+  <th scope="row">
+    <div class="avatar">
+      <% unless nft_collection.image_url.nil? %>
+        <%= image_tag nft_collection.image_url, class: "avatar", alt: "avatar"%>
+      <% end %>
+    </div>
+  </th>
+  <td>
+    <div class="text-left">
+      <p class="collection-name"><%= nft_collection.name %></p>
+    </div>
+  </td>
+  <td>
+    <div class="text-center">
+      <p><%= nft_collection.floor_price %><i class="fab fa-ethereum"></i></p>
+    </div>
+  </td>
+  <td>
+    <div class="text-center">
+      <p><%= '%.2f' % (nft_collection.one_day_volume) %><i class="fab fa-ethereum"></i></p>
+    </div>
+  </td>
+  <td>
+    <div class="text-center">
+      <p><%= '%.2f' % (nft_collection.one_day_change) %>%</p>
+    </div>
+  </td>
+  <td>
+    <div class="text-center">
+      <p><%= (nft_collection.one_day_sales.to_i) %></p>
+    </div>
+  </td>
+  <td>
+    <div class="text-center">
+      <% unless nft_collection.one_day_volume.nil? || nft_collection.one_day_sales.nil?%>
+      <p><%= '%.2f' % (((nft_collection.one_day_volume/nft_collection.one_day_sales) - nft_collection.floor_price) / nft_collection.floor_price * 100) %>%</p>
+      <% end %>
+    </div>
+  </td>
+  <td>
+    <div class="text-center">
+      <p><%= nft_collection.total_supply ? nft_collection.total_supply : "N/A" %> / <%= nft_collection.num_owners ? nft_collection.num_owners : "N/A"  %></p>
+      <% unless nft_collection.total_supply.nil? || nft_collection.num_owners.nil?%>
+      <p><%= '%.5f' % (nft_collection.total_supply.to_f/nft_collection.num_owners) %></p>
+      <% end %>
+    </div>
+  </td>
+    <td>
+    <div class="text-center">
+      <p><%= nft_collection.listed ? nft_collection.listed : "N/A"  %> / <%= nft_collection.total_supply ? nft_collection.total_supply : "N/A" %></p>
+      <% unless nft_collection.total_supply.nil? || nft_collection.listed.nil?%>
+      <p><%= '%.2f' % (nft_collection.listed/nft_collection.total_supply * 100) %>%</p>
+      <% end %>
+    </div>
+  </td>
+  <td>
+    <div class="text-center">
+      <p></p>
+    </div>
+  </td>
+</tr>

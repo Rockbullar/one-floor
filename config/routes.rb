@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'about', to: 'pages#about'
   get 'watchlist', to: 'pages#watchlist'
+  get 'landing', to: 'pages#landing'
   post 'addcollectionwatchlist', to: 'pages#add_collection_to_watchlist'
   get 'portfolio', to: 'pages#portfolio'
   get 'updatesearch', to: 'pages#update_search'
