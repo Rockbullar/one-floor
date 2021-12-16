@@ -17,13 +17,14 @@ class PagesController < ApplicationController
 
     if user_signed_in?
       @nfts = current_user.nfts.reject{ |nft|
-      nft.image_url.nil? || nft.name.nil? }
+        nft.image_url.nil? || nft.name.nil? || nft.highest_bid_eth_price.nil? }
       @watchlist_nfts = current_user.watchlist_nfts.reverse
-      @collections = current_user.watchlist_collections.reverse
+      @collections = current_user.watchlist_collections.reverse.reject{ |collection|
+      collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners) }
     else
       @nfts = Nft.first(5)
       @watchlist_nfts = Nft.last(5)
-      @collections = Collection.first(5)
+      @collections = Collection.first(5).reject
     end
     @all_collections = Collection.all
     articles_service = Articles.new
@@ -43,7 +44,9 @@ class PagesController < ApplicationController
 
     if user_signed_in?
       @watchlist_nfts = current_user.watchlist_nfts.reverse
-      @collections = current_user.watchlist_collections.reverse
+      @collections = current_user.watchlist_collections.reverse.reject{ |collection|
+      collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners)
+    }
     else
       @watchlist_nfts = Nft.last(5)
       @collections = Collection.first(5)
@@ -88,7 +91,7 @@ class PagesController < ApplicationController
     end
 
     if user_signed_in?
-      @nfts = current_user.nfts
+      @nfts = current_user.nfts.reject
     else
       @nfts = Nft.first(5)
     end
