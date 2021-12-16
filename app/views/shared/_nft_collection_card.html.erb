@@ -4,7 +4,7 @@
       <div class="nft-name w-80 ml-3">
           <p class="mb-0 text-dark collection-name"><%= nft_collection.name %></p>
       </div>
-      <div class="card-body d-flex justify-content-space-around align-items-center flex-grow-1 pl-3 pt-0 pr-0">
+      <div class="card-body d-flex justify-content-space-around align-items-center flex-grow-1 pl-3 pt-0 pr-0" style="font-size: 1.4rem;" >
         <div class="avatar float-left">
           <% unless nft_collection.image_url.nil? %>
             <%= image_tag nft_collection.image_url, class: "avatar", alt: "avatar"%>

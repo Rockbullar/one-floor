@@ -5,7 +5,7 @@
         <div class="w-80 ml-3">
           <p class="mb-0 pb-0 text-dark"><%=nft.name ? nft.name : "UNKNOWN"%></p>
         </div>
-        <div class="card-body d-flex justify-content-around w-100 my-auto">
+        <div class="card-body d-flex justify-content-around w-100 my-auto" style="font-size: 1.4rem;">
           <div class="avatar float-left">
             <% unless nft.image_url.nil? %>
               <%= image_tag nft.image_url, class: "avatar", alt: "avatar" %>
