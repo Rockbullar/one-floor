@@ -79,7 +79,7 @@ class Articles
     article_arr.map do |article|
       {
         image_url: article["urlToImage"],
-        text: article["title"][0..50] + "...",
+        text: article["title"][0..80] + "...",
         link: article["url"],
         source: article["source"]["name"],
         timestamp: ((Time.parse("#{date_a}\n\n") - Time.parse(article["publishedAt"]))/3600).to_i

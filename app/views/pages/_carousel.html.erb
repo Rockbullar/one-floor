@@ -23,12 +23,10 @@
     <!--First slide-->
         <div class="carousel-item active">
 
-          <% @collections.sample(4).each do |collection| %>
-            <div class="col-md-3" style="float:left">
+          <% @collections.sample(3).each do |collection| %>
+            <div class="col-4" style="float:left">
               <div class="mb-2" style="overflow:hidden; border:0; height:300px;">
-                <div class="nft">
-                    <%= render 'shared/landing_nft_collection_card', collection: collection%>
-                </div>
+                <%= render 'shared/dashboard_collection_card', collection: collection%>
               </div>
             </div>
           <% end  %>
@@ -38,12 +36,10 @@
 
     <!--Second slide-->
         <div class="carousel-item">
-           <% @collections.sample(4).each do |collection| %>
-            <div class="col-md-3" style="float:left">
+           <% @collections.sample(3).each do |collection| %>
+            <div class="col-4" style="float:left">
               <div class="mb-2" style="overflow:hidden; border:0; height:300px;">
-                <div class="nft">
-                    <%= render 'shared/landing_nft_collection_card', collection: collection%>
-                </div>
+                <%= render 'shared/dashboard_collection_card', collection: collection%>
               </div>
             </div>
           <% end  %>
