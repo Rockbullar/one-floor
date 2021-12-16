@@ -17,17 +17,16 @@ class PagesController < ApplicationController
 
     if user_signed_in?
       @nfts = current_user.nfts.reject{ |nft|
-      nft.image_url.nil? || nft.name.nil? }
+        nft.image_url.nil? || nft.name.nil? || nft.highest_bid_eth_price.nil? }
       @watchlist_nfts = current_user.watchlist_nfts.reverse
-      @collections = current_user.watchlist_collections.reverse.reject  { |collection|
-        collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners)
-      }
+      @collections = current_user.watchlist_collections.reverse.reject{ |collection|
+      collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners) }
     else
-      @nfts = Nft.first(5)
-      @watchlist_nfts = Nft.last(5)
-      @collections = Collection.first(5).reject  { |collection|
-        collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners)
-      }
+      @nfts = Nft.first(10).reject{ |nft|
+        nft.image_url.nil? || nft.name.nil? || nft.highest_bid_eth_price.nil? }
+      @watchlist_nfts = Nft.last(10).reject{ |nft|
+        nft.image_url.nil? || nft.name.nil? || nft.highest_bid_eth_price.nil? }
+      @collections = Collection.first(5).reject
     end
     @all_collections = Collection.all.reject  { |collection|
         collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners)
@@ -49,9 +48,9 @@ class PagesController < ApplicationController
 
     if user_signed_in?
       @watchlist_nfts = current_user.watchlist_nfts.reverse
-      @collections = current_user.watchlist_collections.reverse.reject  { |collection|
-        collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners)
-      }
+      @collections = current_user.watchlist_collections.reverse.reject{ |collection|
+      collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners)
+    }
     else
       @watchlist_nfts = Nft.last(5)
       @collections = Collection.first(5).reject { |collection|
