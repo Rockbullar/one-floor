@@ -93,7 +93,7 @@ class PagesController < ApplicationController
     end
 
     if user_signed_in?
-      @nfts = current_user.nfts.reject
+      @nfts = current_user.nfts
     else
       @nfts = Nft.first(5)
     end
