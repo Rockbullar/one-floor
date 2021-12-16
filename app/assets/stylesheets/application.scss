@@ -21,8 +21,8 @@ body {
           rgba(0, 0, 0, 0.3)
         ), url(asset_path("keleidoscope.jpg"));
   background-size: cover;
-
   text-shadow: 1px 1px black;
+  letter-spacing: 1px;
   .news-content {
     text-shadow: none;
   }
