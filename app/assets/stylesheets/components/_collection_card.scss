@@ -16,7 +16,7 @@ p.nft-card {
 
 .floor-price-text {
   color: black;
-  font-size: 11px;
+  font-size: 0.688rem;
 }
 
 .socials {
@@ -24,7 +24,7 @@ p.nft-card {
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 1.25rem;
   color: black;
   z-index: auto;
 }
@@ -38,21 +38,21 @@ p.nft-card {
 }
 
 .twitter-icon {
-  color:gray;
+  color: gray;
   &:hover {
     color: #1da1f1;
   }
 }
 
 .etherscan-icon {
-  color:gray;
+  color: gray;
   &:hover {
     color: #21325b;
   }
 }
 
 .discord-icon {
-  color:gray;
+  color: gray;
   &:hover {
     color: #7288da;
   }

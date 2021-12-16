@@ -7,7 +7,7 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Carter+One&family=Concert+One&family=Fjalla+One&family=Lilita+One&family=Special+Elite&family=Staatliches&family=Teko:wght@400;700&display=swap');// Your CSS partials
+@import url("https://fonts.googleapis.com/css2?family=Bungee&family=Carter+One&family=Concert+One&family=Fjalla+One&family=Lilita+One&family=Special+Elite&family=Staatliches&family=Teko:wght@400;700&display=swap"); // Your CSS partials
 @import "components/index";
 @import "pages/index";
 @import "components/add_collection_watchlist_modal";
@@ -17,12 +17,10 @@
 body {
   -webkit-font-smoothing: antialiased;
   background-attachment: fixed;
-  background: linear-gradient(
-          rgba(0, 0, 0, 0.3),
-          rgba(0, 0, 0, 0.3)
-        ), url(asset_path("keleidoscope.jpg"));
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(asset_path("keleidoscope.jpg"));
   background-size: cover;
-  text-shadow: 1px 1px black;
+  text-shadow: 2px 2px black;
   letter-spacing: 1px;
   .news-content {
     text-shadow: none;
