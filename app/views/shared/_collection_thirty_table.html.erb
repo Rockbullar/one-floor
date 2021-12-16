@@ -1,50 +1,50 @@
 <tr>
   <th scope="row" class="text-align-center" style="vertical-align: middle;">
-    <div class="avatar pl-2">
+    <div class="avatar">
       <% unless nft_collection.image_url.nil? %>
         <%= image_tag nft_collection.image_url, class: "avatar", alt: "avatar"%>
       <% end %>
     </div>
   </th>
-  <td style="vertical-align: middle;">
+  <td class="highlight" style="vertical-align: middle;">
     <div class="text-center">
       <p class="collection-name text-left" style="font-size: 15px; font-weight: bold;"><%= nft_collection.name %></p>
     </div>
   </td>
-  <td style="vertical-align: middle;">
+  <td class="highlight" style="vertical-align: middle;">
     <div class="text-center">
       <p><%= nft_collection.floor_price %><i class="fab fa-ethereum"></i></p>
     </div>
   </td>
-  <td style="vertical-align: middle;">
+  <td class="highlight" style="vertical-align: middle;">
     <div class="text-center">
       <% unless nft_collection.thirty_day_volume.nil?%>
         <p><%= '%.2f' % (nft_collection.thirty_day_volume) %><i class="fab fa-ethereum"></i></p>
       <% end %>
     </div>
   </td>
-  <td style="vertical-align: middle;">
+  <td class="highlight" style="vertical-align: middle;">
     <div class="text-center">
       <% unless nft_collection.thirty_day_change.nil?%>
         <p><%= '%.2f' % (nft_collection.thirty_day_change) %>%</p>
       <% end %>
     </div>
   </td>
-  <td style="vertical-align: middle;">
+  <td class="highlight" style="vertical-align: middle;">
     <div class="text-center">
       <% unless nft_collection.thirty_day_sales.nil?%>
         <p><%= (nft_collection.thirty_day_sales.to_i) %></p>
       <% end %>
     </div>
   </td>
-  <td style="vertical-align: middle;">
+  <td class="highlight" style="vertical-align: middle;">
     <div class="text-center">
       <% unless nft_collection.thirty_day_volume.nil? || nft_collection.thirty_day_sales.nil?%>
       <p><%= '%.2f' % (((nft_collection.thirty_day_volume/nft_collection.thirty_day_sales) - nft_collection.floor_price) / nft_collection.floor_price * 100) %>%</p>
       <% end %>
     </div>
   </td>
-  <td style="vertical-align: middle;">
+  <td class="highlight" style="vertical-align: middle;">
     <div class="text-center">
       <p><%= nft_collection.total_supply ? nft_collection.total_supply : "N/A" %> / <%= nft_collection.num_owners ? nft_collection.num_owners : "N/A"  %></p>
       <% unless nft_collection.total_supply.nil? || nft_collection.num_owners.nil?%>
