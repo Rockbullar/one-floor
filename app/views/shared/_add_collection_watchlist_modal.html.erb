@@ -1,0 +1,20 @@
+<div class="modal fade" id="collectionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog mw-100 w-75" role="document">
+      <div class="modal-content glass">
+        <div class="modal-header d-flex justify-content-center">
+          <p class="modal-title text-white">Add Collection to Watchlist</p>
+        </div>
+        <div id='modal-display' data-controller="dashboard-collection-watchlist-form">
+          <div class='d-flex justify-content-center my-2'>
+            <input placeholder="Search" data-dashboard-collection-watchlist-form-target="name" type="text" data-action="keyup->dashboard-collection-watchlist-form#search">
+          </div>
+          <div class="my-2" style="overflow-y: scroll; height:70vh" data-dashboard-collection-watchlist-form-target="output">
+          </div>
+          <div class="d-none" style="height:50vh" data-dashboard-collection-watchlist-form-target="loading">
+            <div class="loader mx-auto" style='margin-top:200px;'></div>
+            <p class="text-center my-5">Adding to your watchlist...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

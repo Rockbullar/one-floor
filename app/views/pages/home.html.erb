@@ -1,16 +1,19 @@
 <div class="container-fluid">
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <%= render 'shared/add_collection_watchlist_modal' %>
+  <div class="alert alert-success" role="alert">
+    test
+  </div>
+  <div class="modal fade" id="nftModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog mw-100 w-75" role="document">
       <div class="modal-content glass">
         <div class="modal-header">
-          <p class="modal-title text-white">Add Collection to Watchlist</p>
+          <p class="modal-title text-white">Add Nft to Watchlist</p>
         </div>
-        <div data-controller="watchlist-form">
+        <div data-controller="dashboard-collection-watchlist-form">
           <div class='d-flex justify-content-center my-2'>
-            <input placeholder="Search" data-watchlist-form-target="name" type="text" data-action="keyup->watchlist-form#search">
+            <input placeholder="Search" data-dashboard-collection-watchlist-form-target="name" type="text" data-action="keyup->dashboard-collection-watchlist-form#search">
           </div>
-          <div class="btn" data-action="click->watchlist-form#search">xxx</div>
-          <span class="my-2" data-watchlist-form-target="output">
+          <span class="my-2" data-dashboard-collection-watchlist-form-target="output">
           </span>
         </div>
       </div>
@@ -47,14 +50,14 @@
       <div class="tab-content" id="pills-tabContent">
         <div class="glass mx-auto pt-6 tab-pane fade show active" id="pills-collection" style="overflow-y: scroll; height:75vh;">
           <div class="pt-3">
-            <div class="nft-card my-2 py-2 px-1 mx-auto" id='add-watchlist-collection-button'>
-              <div id="add-collection-to-watchlist" class="d-flex h-100 flex-column justify-content-center align-items-center">
-                <p>Add collection to watchlist</p>
-                <button type="button" class="btn text-white" data-toggle="modal" data-target="#exampleModal">
-                  <i class="far fa-plus-square d-block align-middle text-center" style="font-size:2rem;"></i>
-                </button>
+            <a href="" data-toggle="modal" data-target="#collectionModal">
+              <div class="nft-card my-2 py-2 px-1 mx-auto" style='height:50px' id='add-watchlist-collection-button'>
+                <div id="add-collection-to-watchlist" class="d-flex h-100 justify-content-center align-items-center">
+                  <i class="far fa-plus-square d-block align-middle text-center text-white mr-3" style="font-size:2rem;"></i>
+                  <p class="mb-0 text-white">Add Collection to watchlist</p>
+                </div>
               </div>
-            </div>
+            </a>
             <% @collections.each do |collection| %>
               <%= render 'shared/dashboard_collection_card', collection: collection%>
             <% end %>
@@ -62,6 +65,14 @@
         </div>
         <div class="glass mx-auto pt-6 tab-pane fade" id="pills-individual" style="overflow-y: scroll; height:75vh;">
           <div class="pt-3 w-100">
+            <a href="" data-toggle="modal" data-target="#nftModal">
+              <div class="nft-card my-2 py-2 px-1 mx-auto" style='height:50px' id='add-watchlist-collection-button'>
+                <div id="add-collection-to-watchlist" class="d-flex h-100 justify-content-center align-items-center">
+                  <i class="far fa-plus-square d-block align-middle text-center text-white mr-3" style="font-size:2rem;"></i>
+                  <p class="mb-0 text-white">Add Nft to watchlist</p>
+                </div>
+              </div>
+            </a>
             <% @watchlist_nfts.each do |nft| %>
               <%= render "shared/dashboard_nft_card", nft: nft %></a>
             <% end %>
