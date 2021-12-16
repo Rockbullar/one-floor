@@ -1,4 +1,4 @@
-<div class="justify-content-center align-self-center" style="height:50vh;">
+<div class="justify-content-center align-self-center" style="height:40vh;">
   <div class="d-flex-column-container">
 
     <!--Carousel Wrapper-->
@@ -25,7 +25,7 @@
 
           <% @collections.sample(3).each do |collection| %>
             <div class="col-4" style="float:left">
-              <div class="mb-2" style="overflow:hidden; border:0; height:300px;">
+              <div class="mb-2" style="overflow:hidden; border:0; height:200px;">
                 <%= render 'shared/dashboard_collection_card', collection: collection%>
               </div>
             </div>
@@ -38,7 +38,7 @@
         <div class="carousel-item">
            <% @collections.sample(3).each do |collection| %>
             <div class="col-4" style="float:left">
-              <div class="mb-2" style="overflow:hidden; border:0; height:300px;">
+              <div class="mb-2" style="overflow:hidden; border:0; height:200px;">
                 <%= render 'shared/dashboard_collection_card', collection: collection%>
               </div>
             </div>
