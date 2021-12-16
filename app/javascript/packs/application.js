@@ -32,6 +32,9 @@ document.addEventListener('turbolinks:load', () => {
   initMetamask();
   fetchEth();
   initTooltip();
+  setTimeout(function () {
+    $('.alert').fadeOut();
+  }, 3000);
 });
 
 import "controllers"

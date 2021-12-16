@@ -1,0 +1,9 @@
+.add-button {
+  background-color: orange;
+  width: 15%;
+  transform: none;
+  border: 1px;
+  &:hover {
+    transform: scale(1.05)
+  }
+}
