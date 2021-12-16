@@ -11,7 +11,8 @@ $font-size-base: 1rem;
 
 // Colors
 $body-color: $gray;
-$primary:    #E55812;
+$primary: $gray;
+// $primary:    #E55812;
 $success:    $green;
 $info:       $yellow;
 $danger:     $red;

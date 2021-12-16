@@ -1,21 +1,23 @@
-<div class="devise">
-  <h2>Log in</h2>
+<div class= "container">
+  <div class = "row">
+    <div class="devise col-6 mx-auto glass p-3" style="position: relative; top: 50%; transform: translateY(+30%);">
+      <h5>Login with Metamask</h2>
 
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%= f.input :wallet_id,
-                  required: true,
-                  readonly: true,
-                  autofocus: true %>
-      <%= f.input :password,
-                  required: false,
-                  input_html: { autocomplete: "current-password" } %>
-      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= f.input :wallet_id,
+                      required: true,
+                      readonly: true,
+                      autofocus: true %>
+          <%= f.input :password,
+                      required: false,
+                      input_html: { autocomplete: "current-password" } %>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Log in" %>
+        <div class="form-actions align-items-center">
+          <%= f.button :submit, "Login with Metamask", class: "glass" %> <%= render "devise/shared/links" %>
+        </div>
+      <% end %>
+
     </div>
-  <% end %>
+  </div>
 </div>
-
-
-<%= render "devise/shared/links" %>
