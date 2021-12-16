@@ -93,7 +93,7 @@ Collection.destroy_all
 #   create_collection(collection, contract)
 # end
 
-wallet_array = ['0x241Af3d9a9959d0E78353Ff26f62A3eB7798202D', '0x740025AB2bF4A38Ca54cd8405f658403aFD36260', '0x98d365a3df9711603dd2ab52bf45b16796336726']
+wallet_array = ['0x241Af3d9a9959d0E78353Ff26f62A3eB7798202D', '0x740025AB2bF4A38Ca54cd8405f658403aFD36260', '0x98d365a3df9711603dd2ab52bf45b16796336726', '0xbdb41bff7e828e2dc2d15eb67257455db818f1dc', '0x4084df8bf74ba73f04eb39b89df698608df7f4b5']
 
 wallet_array.each do |wallet|
   x = Opensea.new(wallet)
@@ -101,7 +101,7 @@ wallet_array.each do |wallet|
 end
 
 # seed user
-seeded_user_list = ['0x241Af3d9a9959d0E78353Ff26f62A3eB7798202D', '0x740025AB2bF4A38Ca54cd8405f658403aFD36260', '0x98d365a3df9711603dd2ab52bf45b16796336726']
+seeded_user_list = ['0x241Af3d9a9959d0E78353Ff26f62A3eB7798202D', '0x740025AB2bF4A38Ca54cd8405f658403aFD36260', '0x98d365a3df9711603dd2ab52bf45b16796336726', '0xbdb41bff7e828e2dc2d15eb67257455db818f1dc', '0x4084df8bf74ba73f04eb39b89df698608df7f4b5']
 
 seeded_user_list.each do |user|
   unless User.find_by( wallet_id: user.downcase )
