@@ -1,12 +1,13 @@
 class Opensea
   def initialize(wallet_id)
     @base_url = 'https://api.opensea.io/api/v1'
-    @wallet_id = wallet_id
+    @wallet_id = wallet_id.downcase
   end
 
   # based on the wallet id, retrieve all the nfts associated with the wallet id
   # if the nft ald exist in the db, we'll just update if need to be updated
   def retrieve_nfts
+    puts "From wallet #{@wallet_id}"
     port_url = URI("#{@base_url}/assets?owner=#{@wallet_id}&order_direction=desc&offset=0&limit=20")
     port_http = Net::HTTP.new(port_url.host, port_url.port)
     port_http.use_ssl = true
@@ -18,6 +19,7 @@ class Opensea
     nft_array.map do |api_nft|
       x = retrieve_collection(api_nft["collection"]["slug"])
       unless x.nil?
+        puts "Saving nft collection #{api_nft["collection"]["slug"]}"
         nft = Nft.find_or_create_by!(
           token_id: api_nft["token_id"],
           contract_id: api_nft["asset_contract"]["address"],
@@ -30,10 +32,8 @@ class Opensea
         nft.permalink ||= api_nft["permalink"]
         # nft.twitter_url ||= "https://twitter.com/#{api_nft['collection']['twitter_username']}"
         # nft.discord_url ||= api_nft["collection"]["discord_url"]
-
-        if User.find_by(wallet_id: @wallet_id)
-          nft.user ||= User.find_by(wallet_id: @wallet_id)
-        end
+        # binding.pry
+        nft.user ||= User.find_by(wallet_id: @wallet_id)
         nft.last_sale_eth_price = api_nft["last_sale"].nil? ? 0 : api_nft["last_sale"]["total_price"]
         nft.highest_bid_eth_price = retrieve_highestbid_currentprice(nft)[:bid]
         nft.current_sale_price = retrieve_highestbid_currentprice(nft)[:price]
