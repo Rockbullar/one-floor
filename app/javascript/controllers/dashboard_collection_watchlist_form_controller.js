@@ -10,7 +10,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "name", "output" ]
+  static targets = [ "name", "output", "cards", "loading" ]
 
   search() {
     console.log('greet')
@@ -21,5 +21,11 @@ export default class extends Controller {
       .then((data) => {
         this.outputTarget.innerHTML = data;
       })
+  }
+
+  loading() {
+    this.outputTarget.classList.add("d-none")
+    this.nameTarget.classList.add("d-none")
+    this.loadingTarget.classList.remove("d-none")
   }
 }
