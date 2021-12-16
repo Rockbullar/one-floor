@@ -13,6 +13,12 @@
   backdrop-filter: blur( 10px );
   -webkit-backdrop-filter: blur( 10px );
   border: 1px solid rgba( 255, 255, 255, 0.18 );
+  p {
+    font-size: 1.5rem;
+  }
+  a {
+    font-size: 1.5rem;
+  }
 }
 
 .navbar-lewagon .navbar-brand img {
@@ -40,6 +46,8 @@
   display: block;
   padding: 0.5rem 1rem;
 }
+
+
 
 // .navbar-collapse {
 // }

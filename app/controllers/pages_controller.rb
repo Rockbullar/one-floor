@@ -19,13 +19,19 @@ class PagesController < ApplicationController
       @nfts = current_user.nfts.reject{ |nft|
       nft.image_url.nil? || nft.name.nil? }
       @watchlist_nfts = current_user.watchlist_nfts.reverse
-      @collections = current_user.watchlist_collections.reverse
+      @collections = current_user.watchlist_collections.reverse.reject  { |collection|
+        collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners)
+      }
     else
       @nfts = Nft.first(5)
       @watchlist_nfts = Nft.last(5)
-      @collections = Collection.first(5)
+      @collections = Collection.first(5).reject  { |collection|
+        collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners)
+      }
     end
-    @all_collections = Collection.all
+    @all_collections = Collection.all.reject  { |collection|
+        collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners)
+      }
     articles_service = Articles.new
     @articles = articles_service.call
     @slugs = Collection.all.map(&:slug)
@@ -43,10 +49,14 @@ class PagesController < ApplicationController
 
     if user_signed_in?
       @watchlist_nfts = current_user.watchlist_nfts.reverse
-      @collections = current_user.watchlist_collections.reverse
+      @collections = current_user.watchlist_collections.reverse.reject  { |collection|
+        collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners)
+      }
     else
       @watchlist_nfts = Nft.last(5)
-      @collections = Collection.first(5)
+      @collections = Collection.first(5).reject { |collection|
+        collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners)
+      }
     end
 
     @watchlist_nfts = Nft.last(5) #remove when watchlist adding is complete
@@ -63,7 +73,9 @@ class PagesController < ApplicationController
 
     @nfts = Nft.first(5)
     @watchlist_nfts = Nft.last(5)
-    @collections = Collection.first(5)
+    @collections = Collection.first(5).reject { |collection|
+        collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners)
+      }
   end
 
   def add_collection_to_watchlist
