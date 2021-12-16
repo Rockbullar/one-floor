@@ -170,13 +170,8 @@ class Opensea
 
   def listedcountscraper(slug)
     puts "getting results from this #{slug}"
-    html_content = URI.open("https://opensea.io/collection/#{slug}?search[sortAscending]=true&search[sortBy]=PRICE&search[toggles][0]=BUY_NOW").read
-    doc = Nokogiri::HTML(html_content)
-    result = doc.search('div.AssetSearchView--results-count').first.text.strip.gsub(/(\,?\D*)/,'').to_f
-  end
-
-  def self.listedcountscraper(slug)
-    html_content = URI.open("https://opensea.io/collection/#{slug}?search[sortAscending]=true&search[sortBy]=PRICE&search[toggles][0]=BUY_NOW").read
+    uri = URI("https://opensea.io/collection/#{slug}?search[sortAscending]=true&search[sortBy]=PRICE&search[toggles][0]=BUY_NOW")
+    html_content = Net::HTTP.get(uri)
     doc = Nokogiri::HTML(html_content)
     result = doc.search('div.AssetSearchView--results-count').first.text.strip.gsub(/(\,?\D*)/,'').to_f
   end
