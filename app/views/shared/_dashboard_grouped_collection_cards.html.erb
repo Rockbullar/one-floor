@@ -1,5 +1,9 @@
-<% collections.each do |collection| %>
-  <%= link_to addcollectionwatchlist_path(slug: collection.slug), method: :post do %>
-    <%= render 'shared/dashboard_collection_card', collection: collection%>
+<div class="row">
+  <% collections.each do |collection| %>
+    <div class="col-6">
+      <%= link_to addcollectionwatchlist_path(slug: collection.slug), method: :post, id: 'selected-collection', :data => { 'dashboard-collection-watchlist-form-target' => 'cards', :action => "click->dashboard-collection-watchlist-form#loading"} do %>
+        <%= render 'shared/dashboard_collection_card', collection: collection, style: "width:250px;" %>
+      <% end %>
+    </div>
   <% end %>
-<% end %>
+</div>
