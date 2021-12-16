@@ -71,8 +71,10 @@ class PagesController < ApplicationController
       flash.alert = "Invalid collection"
     else
       current_user.add_to_watchlist(new_collection)
+      flash.alert = "Added to watchlist!"
     end
-    redirect_to root_path(anchor: "watchlist-form")
+    redirect_back fallback_location: root_path
+    # redirect_to root_path
   end
 
   def portfolio

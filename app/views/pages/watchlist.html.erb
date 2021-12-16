@@ -6,25 +6,27 @@
   </div>
 </div> %>
 <div class="checker">
-  <div class="container">
-    <div class="row toggle-tabs">
-      <div class="tab-container mx-1 px-2 pb-2" >
-        <ul class="nav nav-pills mb-0 justify-content-center" id="pills-tab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link text-white px-2 active" id="pills-24Hr-tab" href="#pills-24Hr"  data-toggle="pill" role="tab" aria-selected="true">24Hr Watchlist</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white px-2" id="pills-7D-tab" href="#pills-7D"  data-toggle="pill" role="tab" aria-selected="false">7D Watchlist</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white px-2" id="pills-30D-tab" href="#pills-30D"  data-toggle="pill" role="tab" aria-selected="false">30D Watchlist</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white px-2" id="pills-individual-tab" data-toggle="pill" href="#pills-individual" role="tab" aria-selected="false">Individual Watchlist</a>
-          </li>
-        </ul>
-      </div>
+  <%= render 'shared/add_collection_watchlist_modal' %>
+  <div class="row toggle-tabs d-flex justify-content-between w-100 mx-0">
+    <div class="tab-container mx-1 px-2 pb-2" >
+      <ul class="nav nav-pills mb-0 justify-content-center" id="pills-tab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link text-white px-2 active" id="pills-24Hr-tab" href="#pills-24Hr"  data-toggle="pill" role="tab" aria-selected="true">24Hr Watchlist</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white px-2" id="pills-7D-tab" href="#pills-7D"  data-toggle="pill" role="tab" aria-selected="false">7D Watchlist</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white px-2" id="pills-30D-tab" href="#pills-30D"  data-toggle="pill" role="tab" aria-selected="false">30D Watchlist</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white px-2" id="pills-individual-tab" data-toggle="pill" href="#pills-individual" role="tab" aria-selected="false">Individual Watchlist</a>
+        </li>
+      </ul>
     </div>
+    <button type="button" class="btn glass text-white" data-toggle="modal" data-target="#collectionModal">
+      <p class="mb-0">Add collection</p>
+    </button>
   </div>
   <div class="tab-content" id="pills-tabContent">
     <div class="mx-auto pt-6 tab-pane fade show active" id="pills-24Hr" style="overflow-y: scroll; height:75vh;">
