@@ -1,6 +1,6 @@
 <tr>
-  <th scope="row">
-    <div class="avatar">
+  <th scope="row" class="text-align-center">
+    <div class="avatar pl-3">
       <% unless nft_collection.image_url.nil? %>
         <%= image_tag nft_collection.image_url, class: "avatar", alt: "avatar"%>
       <% end %>
@@ -8,7 +8,7 @@
   </th>
   <td>
     <div class="text-left">
-      <p class="collection-name"><%= nft_collection.name %></p>
+      <p class="collection-name pt-3" style="font-size: 15px; font-weight: bold;"><%= nft_collection.name %></p>
     </div>
   </td>
   <td>
@@ -58,11 +58,6 @@
       <% unless nft_collection.total_supply.nil? || nft_collection.listed.nil?%>
       <p><%= '%.2f' % (nft_collection.listed/nft_collection.total_supply * 100) %>%</p>
       <% end %>
-    </div>
-  </td>
-  <td>
-    <div class="text-center">
-      <p></p>
     </div>
   </td>
 </tr>

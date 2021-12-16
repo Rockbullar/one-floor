@@ -24,12 +24,14 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import { initMetamask} from '../plugins/init_metamask';
 import { fetchEth } from '../plugins/init_ethprice';
+import { initTooltip } from "../plugins/init_tooltip"
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   initMetamask();
   fetchEth();
+  initTooltip();
 });
 
 import "controllers"
