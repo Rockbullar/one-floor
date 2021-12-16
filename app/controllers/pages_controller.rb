@@ -16,7 +16,8 @@ class PagesController < ApplicationController
     end
 
     if user_signed_in?
-      @nfts = current_user.nfts
+      @nfts = current_user.nfts.reject{ |nft|
+      nft.image_url.nil? || nft.name.nil? }
       @watchlist_nfts = current_user.watchlist_nfts.reverse
       @collections = current_user.watchlist_collections.reverse
     else
