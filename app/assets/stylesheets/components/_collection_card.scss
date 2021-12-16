@@ -36,3 +36,24 @@ p.nft-card {
   border-radius: 50%;
   background-color: black;
 }
+
+.twitter-icon {
+  color:gray;
+  &:hover {
+    color: #1da1f1;
+  }
+}
+
+.etherscan-icon {
+  color:gray;
+  &:hover {
+    color: #21325b;
+  }
+}
+
+.discord-icon {
+  color:gray;
+  &:hover {
+    color: #7288da;
+  }
+}
