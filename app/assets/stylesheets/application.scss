@@ -21,10 +21,12 @@ body {
           rgba(0, 0, 0, 0.3)
         ), url(asset_path("keleidoscope.jpg"));
   background-size: cover;
+
   text-shadow: 1px 1px black;
   .news-content {
     text-shadow: none;
   }
+
   // "figma(1).png";
 
   // background: radial-gradient(
