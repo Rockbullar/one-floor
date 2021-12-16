@@ -1,9 +1,9 @@
-<div class="navbar navbar-expand-sm bg-transparent navbar-lewagon my-4 pt-0 pb-0" style="align-items: center;">
-  <div class="d-flex justify-content-start flex-grow-1 pt-2 justify-content-space-between">
+<div class="navbar navbar-expand-sm bg-transparent navbar-lewagon my-4 pt-0 pb-0">
+  <div class="d-flex align-items-center">
     <%= link_to root_path do %>
       <%= image_tag(asset_path("floortwo.png"), height: 25, style: "transform: scale(2); margin: 0 24px;") %>
     <% end %>
-    <%= link_to "Portfolio", portfolio_path, class: "nav-link my-auto text-white" %>
+    <%= link_to "Portfolio", portfolio_path, class: "nav-link my-auto text-white mx-4" %>
     <%= link_to "Watchlist", watchlist_path, class: "nav-link my-auto text-white" %>
   </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,13 +12,13 @@
   <div class="collapse navbar-collapse pr-0" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
       <li class="mx-4 d-flex" style={color:white}>
-        <h5 class='my-auto'>ETH: </h5> <h5 class="ethprice my-auto" id="info"></h5> <h5 class="my-auto"> USD</h5>
+        <p class='my-auto'>ETH: </p> <p class="ethprice my-auto" id="info"></p> <p class="my-auto"> USD</p>
       </li>
       <li class="mx-4 d-flex" style={color:white}>
-        <h5 class='my-auto'>Seller Gas: </h5> <h5 class="gasprice my-auto"> <%= @gas_seller %> </h5> <h5 class="my-auto"> USD</h5>
+        <p class='my-auto'>Seller Gas: </p> <p class="gasprice my-auto"> <%= @gas_seller %> </p> <p class="my-auto"> USD</p>
       </li>
       <li class="mx-4 d-flex" style={color:white}>
-        <h5 class='my-auto'>Buyer Gas: </h5> <h5 class="gasprice my-auto"> <%= @gas_buyer %> </h5> <h5 class="my-auto"> USD</h5>
+        <p class='my-auto'>Buyer Gas: </p> <p class="gasprice my-auto"> <%= @gas_buyer %> </p> <p class="my-auto"> USD</p>
       </li>
       <% if user_signed_in? %>
         <li class="nav-item mx-4" style="margin: 4px 0;">

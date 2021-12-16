@@ -7,17 +7,26 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
-// Your CSS partials
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Carter+One&family=Concert+One&family=Fjalla+One&family=Lilita+One&family=Special+Elite&family=Staatliches&family=Teko:wght@400;700&display=swap');// Your CSS partials
 @import "components/index";
 @import "pages/index";
 @import "components/add_collection_watchlist_modal";
 
 body {
   -webkit-font-smoothing: antialiased;
+  font-family: 'Staatliches', cursive;
   background-attachment: fixed;
-  background-image: url(asset_path("keleidoscope.jpg"));
+  background: linear-gradient(
+          rgba(0, 0, 0, 0.3),
+          rgba(0, 0, 0, 0.3)
+        ), url(asset_path("keleidoscope.jpg"));
   background-size: cover;
+
+  text-shadow: 1px 1px black;
+  .news-content {
+    text-shadow: none;
+  }
+
   // "figma(1).png";
 
   // background: radial-gradient(
