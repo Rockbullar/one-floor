@@ -35,7 +35,7 @@ class Opensea
         # binding.pry
         nft.user ||= User.find_by(wallet_id: @wallet_id)
         nft.last_sale_eth_price = api_nft["last_sale"].nil? ? 0 : api_nft["last_sale"]["total_price"]
-        nft.highest_bid_eth_price = retrieve_highestbid_currentprice(nft)[:bid]
+        nft.highest_bid_eth_price = retrieve_highestbid_currentprice(nft)[:bid].nil? ? 0 : retrieve_highestbid_currentprice(nft)[:bid]
         nft.current_sale_price = retrieve_highestbid_currentprice(nft)[:price]
         nft.save!
       end

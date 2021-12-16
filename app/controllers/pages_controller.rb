@@ -48,14 +48,10 @@ class PagesController < ApplicationController
 
     if user_signed_in?
       @watchlist_nfts = current_user.watchlist_nfts.reverse
-      @collections = current_user.watchlist_collections.reverse.reject{ |collection|
-      collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners)
-    }
+      @collections = current_user.watchlist_collections.reverse
     else
       @watchlist_nfts = Nft.last(5)
-      @collections = Collection.first(5).reject { |collection|
-        collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners)
-      }
+      @collections = Collection.first(5)
     end
 
     @watchlist_nfts = Nft.last(5) #remove when watchlist adding is complete
