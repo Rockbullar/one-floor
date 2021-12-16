@@ -16,7 +16,8 @@ class PagesController < ApplicationController
     end
 
     if user_signed_in?
-      @nfts = current_user.nfts
+      @nfts = current_user.nfts.reject{ |nft|
+      nft.image_url.nil? || nft.name.nil? }
       @watchlist_nfts = current_user.watchlist_nfts.reverse
       @collections = current_user.watchlist_collections.reverse
     else
@@ -94,8 +95,7 @@ class PagesController < ApplicationController
   end
 
   def update_search
-    @collections = Collection.where("slug ILIKE ?", "%#{params['query']}%")
-    @collections = @collections.reject{ |collection|
+    @collections = Collection.where("slug ILIKE ?", "%#{params['query']}%").reject{ |collection|
       collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners)
     }
     respond_to do |format|

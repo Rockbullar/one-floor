@@ -1,73 +1,73 @@
 <tr>
-  <th scope="row">
-    <div class="pl-3">
+  <th scope="row" class="text-align-center" style="vertical-align: middle;">
+    <div class="avatar">
       <% unless nft.image_url.nil? %>
         <%= image_tag nft.image_url, class: "avatar", alt: "avatar"%>
       <% end %>
     </div>
   </th>
   <div class="d-flex align-items-center justify-content-around" style="background-color: transparent;">
-  <td>
-    <div class="text-left">
-      <p class="nft-name pt-3" style="font-size: 15px; font-weight: bold;"><%=nft.name ? nft.name : "UNKNOWN"%></p>
-    </div>
-  </td>
-  <td>
-    <div class="text-center align-items-center">
-      <%= nft.collection.floor_price %> <i class="fab fa-ethereum"></i>
-    </div>
-  </td>
-  <td>
-    <div class="text-center align-items-center">
-    <% unless nft.last_sale_eth_price.nil? %>
-      <%= '%.2f' % (nft.last_sale_eth_price/10**18) %> <i class="fab fa-ethereum"></i>
-    <% end %>
-    </div>
-  </td>
-  <td>
-    <div class="text-center align-items-center">
-    <% unless nft.highest_bid_eth_price.nil? %>
-      <%= '%.2f' % (nft.highest_bid_eth_price/10**18) %>
-    <% end %>
-    </div>
-  </td>
-  <td>
-    <div class="text-center align-items-center">
-      <%= '%.2f' % (nft.collection.one_day_volume) %> <i class="fab fa-ethereum"></i>
-    </div>
-  </td>
-  <td>
-    <div class="text-center align-items-center">
-      <%= '%.2f' % (nft.collection.one_day_change) %>%
-    </div>
-  </td>
-  <td>
-    <div class="text-center align-items-center">
-      <%= (nft.collection.one_day_sales.to_i) %>
-    </div>
-  </td>
-  <td>
-    <div class="text-center align-items-center">
-      <% unless nft.collection.one_day_volume.nil? || nft.collection.one_day_sales.nil?%>
-      <%= '%.2f' % (((nft.collection.one_day_volume/nft.collection.one_day_sales) - nft.collection.floor_price) / nft.collection.floor_price * 100) %>%
+    <td style="vertical-align: middle;">
+      <div class="text-left">
+        <p class="nft-name pt-3" style="font-size: 15px; font-weight: bold;"><%=nft.name ? nft.name : "UNKNOWN"%></p>
+      </div>
+    </td>
+    <td style="vertical-align: middle;">
+      <div class="text-center align-items-center">
+        <%= nft.collection.floor_price %> <i class="fab fa-ethereum"></i>
+      </div>
+    </td>
+    <td style="vertical-align: middle;">
+      <div class="text-center align-items-center">
+      <% unless nft.last_sale_eth_price.nil? %>
+        <%= '%.2f' % (nft.last_sale_eth_price/10**18) %> <i class="fab fa-ethereum"></i>
       <% end %>
-    </div>
-  </td>
-  <td>
-    <div class="text-center align-items-center">
-      <p><%= nft.collection.total_supply ? nft.collection.total_supply : "N/A" %> / <%= nft.collection.num_owners ? nft.collection.num_owners : "N/A"  %></p>
-      <% unless nft.collection.total_supply.nil? || nft.collection.num_owners.nil?%>
-      <p><%= '%.5f' % (nft.collection.total_supply.to_f/nft.collection.num_owners) %></p>
+      </div>
+    </td>
+    <td style="vertical-align: middle;">
+      <div class="text-center align-items-center">
+      <% unless nft.highest_bid_eth_price.nil? %>
+        <%= '%.2f' % (nft.highest_bid_eth_price/10**18) %>
       <% end %>
-    </div>
-  </td>
-    <td>
-    <div class="text-center align-items-center">
-      <p><%= nft.collection.listed ? nft.collection.listed : "N/A"  %> / <%= nft.collection.total_supply ? nft.collection.total_supply : "N/A" %></p>
-      <% unless nft.collection.total_supply.nil? || nft.collection.listed.nil?%>
-      <p><%= '%.2f' % (nft.collection.listed/nft.collection.total_supply * 100) %>%</p>
-      <% end %>
-    </div>
-  </td>
+      </div>
+    </td>
+    <td style="vertical-align: middle;">
+      <div class="text-center align-items-center">
+        <%= '%.2f' % (nft.collection.one_day_volume) %> <i class="fab fa-ethereum"></i>
+      </div>
+    </td>
+    <td style="vertical-align: middle;">
+      <div class="text-center align-items-center">
+        <%= '%.2f' % (nft.collection.one_day_change) %>%
+      </div>
+    </td>
+    <td style="vertical-align: middle;">
+      <div class="text-center align-items-center">
+        <%= (nft.collection.one_day_sales.to_i) %>
+      </div>
+    </td>
+    <td style="vertical-align: middle;">
+      <div class="text-center align-items-center">
+        <% unless nft.collection.one_day_volume.nil? || nft.collection.one_day_sales.nil?%>
+        <%= '%.2f' % (((nft.collection.one_day_volume/nft.collection.one_day_sales) - nft.collection.floor_price) / nft.collection.floor_price * 100) %>%
+        <% end %>
+      </div>
+    </td>
+    <td style="vertical-align: middle;">
+      <div class="text-center align-items-center">
+        <p><%= nft.collection.total_supply ? nft.collection.total_supply : "N/A" %> / <%= nft.collection.num_owners ? nft.collection.num_owners : "N/A"  %></p>
+        <% unless nft.collection.total_supply.nil? || nft.collection.num_owners.nil?%>
+        <p><%= '%.5f' % (nft.collection.total_supply.to_f/nft.collection.num_owners) %></p>
+        <% end %>
+      </div>
+    </td>
+    <td style="vertical-align: middle;">
+      <div class="text-center align-items-center">
+        <p><%= nft.collection.listed ? nft.collection.listed : "N/A"  %> / <%= nft.collection.total_supply ? nft.collection.total_supply : "N/A" %></p>
+        <% unless nft.collection.total_supply.nil? || nft.collection.listed.nil?%>
+        <p><%= '%.2f' % (nft.collection.listed/nft.collection.total_supply * 100) %>%</p>
+        <% end %>
+      </div>
+    </td>
   </div>
 </tr>
