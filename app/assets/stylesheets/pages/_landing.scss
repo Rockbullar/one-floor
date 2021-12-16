@@ -1,7 +1,10 @@
 .banner {
-  background-size: cover;
+  background-size: cover !important;
   background-position: center;
   padding: 150px;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+  object-fit: cover !important;
 }
 
 .banner h1 {
