@@ -28,7 +28,9 @@ class PagesController < ApplicationController
         nft.image_url.nil? || nft.name.nil? || nft.highest_bid_eth_price.nil? }
       @collections = Collection.first(5).reject
     end
-    @all_collections = Collection.all
+    @all_collections = Collection.all.reject  { |collection|
+        collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners)
+      }
     articles_service = Articles.new
     @articles = articles_service.call
     @slugs = Collection.all.map(&:slug)
@@ -51,7 +53,9 @@ class PagesController < ApplicationController
     }
     else
       @watchlist_nfts = Nft.last(5)
-      @collections = Collection.first(5)
+      @collections = Collection.first(5).reject { |collection|
+        collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners)
+      }
     end
 
     @watchlist_nfts = Nft.last(5) #remove when watchlist adding is complete
@@ -68,7 +72,9 @@ class PagesController < ApplicationController
 
     @nfts = Nft.first(5)
     @watchlist_nfts = Nft.last(5)
-    @collections = Collection.first(5)
+    @collections = Collection.first(5).reject { |collection|
+        collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners)
+      }
   end
 
   def add_collection_to_watchlist

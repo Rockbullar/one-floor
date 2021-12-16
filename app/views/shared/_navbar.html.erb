@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm bg-transparent navbar-lewagon my-4 pt-0 pb-0">
+<div class="navbar navbar-expand-sm bg-transparent navbar-lewagon pt-0 pb-0">
   <div class="d-flex align-items-center pr-0">
     <%= link_to root_path do %>
       <%= image_tag(asset_path("floorfinal.png"), height: 25, style: "transform: scale(2); margin: 0 24px; padding-bottom: 0px;") %>
@@ -22,11 +22,11 @@
       </li>
       <% if user_signed_in? %>
         <li class="nav-item mx-4" style="margin: 4px 0;">
-          <button type="button" class="btn btn-dark" style="padding: 0;">  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link", data: { turbolinks: false }%></button>
+          <button type="button" class="btn btn-dark text-white" style="padding: 0;">  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link text-white", data: { turbolinks: false }%></button>
         </li>
       <% else %>
         <li class="nav-item mx-4" style="margin: 4px 0;">
-          <button type="button" class="btn btn-dark" style="padding: 0;">  <%= link_to "Connect Wallet", new_user_session_path, class: "nav-link", data: { turbolinks: false }%></button>
+          <button type="button" class="btn btn-dark" style="padding: 0;">  <%= link_to "Connect Wallet", new_user_session_path, class: "nav-link text-white", data: { turbolinks: false }%></button>
         </li>
       <% end %>
     </ul>
