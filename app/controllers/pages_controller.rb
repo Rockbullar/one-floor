@@ -17,8 +17,8 @@ class PagesController < ApplicationController
 
     if user_signed_in?
       @nfts = current_user.nfts
-      @watchlist_nfts = current_user.watchlist_nfts
-      @collections = current_user.watchlist_collections
+      @watchlist_nfts = current_user.watchlist_nfts.reverse
+      @collections = current_user.watchlist_collections.reverse
     else
       @nfts = Nft.first(5)
       @watchlist_nfts = Nft.last(5)
@@ -41,8 +41,8 @@ class PagesController < ApplicationController
     end
 
     if user_signed_in?
-      @watchlist_nfts = current_user.watchlist_nfts
-      @collections = current_user.watchlist_collections
+      @watchlist_nfts = current_user.watchlist_nfts.reverse
+      @collections = current_user.watchlist_collections.reverse
     else
       @watchlist_nfts = Nft.last(5)
       @collections = Collection.first(5)
