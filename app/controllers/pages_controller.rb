@@ -95,7 +95,9 @@ class PagesController < ApplicationController
 
   def update_search
     @collections = Collection.where("slug ILIKE ?", "%#{params['query']}%")
-
+    @collections = @collections.reject{ |collection|
+      collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners)
+    }
     respond_to do |format|
       format.text { render partial: 'shared/dashboard_grouped_collection_cards', locals: { collections: @collections }, formats: [:html] }
     end
