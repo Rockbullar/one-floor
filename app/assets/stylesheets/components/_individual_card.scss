@@ -7,12 +7,12 @@
 // }
 
 .nft-card {
-  background: rgba( 242, 241, 241, 0.25 );
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 10px );
-  -webkit-backdrop-filter: blur( 10px );
+  background: rgba(242, 241, 241, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  border: 1px solid rgba(255, 255, 255, 0.18);
   height: 150px;
   width: 350px;
 }
@@ -34,7 +34,7 @@
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 1.125rem;
   color: black;
   z-index: auto;
 }
@@ -48,21 +48,21 @@
 }
 
 .twitter-icon {
-  color:gray;
+  color: gray;
   &:hover {
     color: #1da1f1;
   }
 }
 
 .etherscan-icon {
-  color:gray;
+  color: gray;
   &:hover {
     color: #21325b;
   }
 }
 
 .discord-icon {
-  color:gray;
+  color: gray;
   &:hover {
     color: #7288da;
   }

@@ -8,16 +8,16 @@
 // }
 
 .navbar {
-  background: rgba( 242, 241, 241, 0.25 );
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 10px );
-  -webkit-backdrop-filter: blur( 10px );
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  background: rgba(242, 241, 241, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   p {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
   a {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 }
 
@@ -30,7 +30,7 @@
 }
 
 .navbar-nav {
-  font-weight: 18px;
+  font-weight: 1.25rem;
   background-color: transparent;
 }
 
@@ -46,8 +46,6 @@
   display: block;
   padding: 0.5rem 1rem;
 }
-
-
 
 // .navbar-collapse {
 // }
