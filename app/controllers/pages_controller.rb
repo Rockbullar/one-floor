@@ -22,8 +22,10 @@ class PagesController < ApplicationController
       @collections = current_user.watchlist_collections.reverse.reject{ |collection|
       collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners) }
     else
-      @nfts = Nft.first(5)
-      @watchlist_nfts = Nft.last(5)
+      @nfts = Nft.first(10).reject{ |nft|
+        nft.image_url.nil? || nft.name.nil? || nft.highest_bid_eth_price.nil? }
+      @watchlist_nfts = Nft.last(10).reject{ |nft|
+        nft.image_url.nil? || nft.name.nil? || nft.highest_bid_eth_price.nil? }
       @collections = Collection.first(5).reject
     end
     @all_collections = Collection.all
