@@ -61,13 +61,5 @@
         <% end %>
       </div>
     </td>
-    <td style="vertical-align: middle;">
-      <div class="text-center align-items-center">
-        <p><%= nft.collection.listed ? nft.collection.listed : "N/A"  %> / <%= nft.collection.total_supply ? nft.collection.total_supply : "N/A" %></p>
-        <% unless nft.collection.total_supply.nil? || nft.collection.listed.nil?%>
-        <p><%= '%.2f' % (nft.collection.listed/nft.collection.total_supply * 100) %>%</p>
-        <% end %>
-      </div>
-    </td>
   </div>
 </tr>

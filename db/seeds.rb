@@ -111,4 +111,12 @@ seeded_user_list.each do |user|
       email: "#{user}@gmail.com",
     )
   end
+
+end
+
+User.all.each do |user|
+  6.times do
+    user.add_to_watchlist(Nft.order(Arel.sql('RANDOM()')).first)
+    user.add_to_watchlist(Collection.order(Arel.sql('RANDOM()')).first)
+  end
 end
