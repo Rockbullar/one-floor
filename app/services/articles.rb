@@ -51,7 +51,7 @@ class Articles
       username = author["username"]
       {
         image_url: author["profile_image_url"],
-        text: tweet["text"][0..50] + "...",
+        text: tweet["text"][0..90] + "...",
         link: "https://twitter.com/#{username}/status/#{tweet["id"]}",
         source: username,
         timestamp: ((Time.parse("#{date_a}\n\n") - Time.parse(tweet["created_at"]))/3600).to_i
