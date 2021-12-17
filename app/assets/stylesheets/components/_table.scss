@@ -11,8 +11,7 @@
     // background: inherit;
   background-color: rgba(255, 255, 255, .15);
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 10px );
-  -webkit-backdrop-filter: blur( 10px );
+  backdrop-filter: blur( 30px );
   border-radius: 20px;
   text-decoration: none;
   // border: 1px solid rgba( 255, 255, 255, 0.18 );
@@ -22,7 +21,7 @@
     // background: inherit;
   background-color: rgba(255, 255, 255, .15);
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 15px );
+  backdrop-filter: blur( 100px );
   -webkit-backdrop-filter: blur( 15px );
 }
 
@@ -41,11 +40,11 @@
 
 .highlight:hover {
   // font-size: large ;
-  color: orange;
+  color: $orange;
 }
 
 .nav-item > .active {
-  color: orange !important;
+  color: $orange !important;
   border-radius: 10px !important;
 }
 // th:first-child, td:first-child

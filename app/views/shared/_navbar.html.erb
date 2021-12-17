@@ -3,8 +3,8 @@
     <%= link_to root_path do %>
       <%= image_tag(asset_path("floorfinal.png"), height: 25, style: "transform: scale(2); margin: 0 24px; padding-bottom: 0px;") %>
     <% end %>
-    <%= link_to "Portfolio", portfolio_path, class: "nav-link my-auto text-white mx-4" %>
-    <%= link_to "Watchlist", watchlist_path, class: "nav-link my-auto text-white" %>
+    <%= link_to "Portfolio", portfolio_path, class: "nav-link my-auto text-white mx-4 font-weight-bold" %>
+    <%= link_to "Watchlist", watchlist_path, class: "nav-link my-auto text-white font-weight-bold" %>
   </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -12,21 +12,21 @@
   <div class="collapse navbar-collapse pr-0" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
       <li class="mx-4 d-flex" style={color:white}>
-        <p class='my-auto'>ETH: </p> <p class="ethprice my-auto" id="info"></p> <p class="my-auto"> USD</p>
+        <p class='my-auto'>ETH: </p> <p class="ethprice my-auto font-weight-bold" id="info"></p> <p class="my-auto"> USD</p>
       </li>
       <li class="mx-4 d-flex" style={color:white}>
-        <p class='my-auto'>Seller Gas: </p> <p class="gasprice my-auto"> <%= @gas_seller %> </p> <p class="my-auto"> USD</p>
+        <p class='my-auto'>Seller Gas: </p> <p class="gasprice my-auto font-weight-bold"> <%= @gas_seller %> </p> <p class="my-auto"> USD</p>
       </li>
       <li class="mx-4 d-flex" style={color:white}>
-        <p class='my-auto'>Buyer Gas: </p> <p class="gasprice my-auto"> <%= @gas_buyer %> </p> <p class="my-auto"> USD</p>
+        <p class='my-auto'>Buyer Gas: </p> <p class="gasprice my-auto font-weight-bold"> <%= @gas_buyer %> </p> <p class="my-auto"> USD</p>
       </li>
       <% if user_signed_in? %>
         <li class="nav-item mx-4" style="margin: 4px 0; border-radius: 22px;">
-          <button type="button" class="glass btn" style="padding: 0;">  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "glass nav-link text-white", data: { turbolinks: false }%></button>
+          <button type="button" class="glass btn" style="padding: 0;">  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "glass nav-link text-white font-weight-bold", data: { turbolinks: false }%></button>
         </li>
       <% else %>
         <li class="nav-item mx-4" style="margin: 4px 0; border-radius: 22px;">
-          <button type="button" class="glass btn" style="padding: 0;">  <%= link_to "Connect Wallet", new_user_session_path, class: "glass nav-link text-white", data: { turbolinks: false }%></button>
+          <button type="button" class="glass btn" style="padding: 0;">  <%= link_to "Connect Wallet", new_user_session_path, class: "glass nav-link text-white font-weight-bold", data: { turbolinks: false }%></button>
         </li>
       <% end %>
     </ul>

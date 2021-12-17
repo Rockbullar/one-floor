@@ -4,14 +4,14 @@
         <div class="card-body d-flex justify-content-flex-start mx-0 py-2" style="gap: 8px;">
           <img src= <%= article[:image_url] %> class="news-image" alt="news-image">
           <div class="news-title">
-            <div>
+            <h4 class="font-weight-bold">
               <% if /.+twitter.+/.match?(article[:link]) %>
                 <i class="fab fa-twitter" style="color: dodgerblue;"></i> @<%= article[:source] %>
               <% else %>
                 <%= article[:source] %>
               <% end %>
-            </div>
-            <div class="mb-0 news-content"> <%= article[:text] %> </div>
+            </h4>
+            <div class="mb-0 news-content text-white"> <%= article[:text] %> </div>
             <div style="font-size: smaller;"> <%= article[:timestamp] > 1 ? " #{article[:timestamp]} minutes ago" : "just now" %></div>
           </div>
         </div>

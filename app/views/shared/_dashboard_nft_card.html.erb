@@ -3,32 +3,32 @@
   <div class="row mx-0" style="height: 75%;" id="top row">
     <div class="col-5">
       <%= image_tag nft.image_url, class: "d-block mx-auto", style: "height: 100px; width: 100px; border-radius: 12px;" %>
-    </div>
-    <div class="col-7 d-flex flex-column justify-content-between align-items-center">
-      <p class="mb-0 font-weight-bold"><%= nft.name %></p>
-      <button type="button" class="btn mb-2 w-100 text-light" style="background-color:darkslateblue; border-radius: 12px; font-size: 1.25rem">Floor: <strong><%=nft.collection.floor_price%></strong> <i class="fab fa-ethereum"></i></button>
-    </div>
-  </div>
-  <div class="row mx-0" style="height: 20%" id="bottom row">
-    <div class="col-5">
+
       <div class='d-flex align-items-center justify-content-around my-2'>
         <a href=<%=nft.collection.twitter_url%> target="_blank"><i class="fab fa-twitter twitter-icon"></i></a>
         <a href="https://etherscan.io/address/<%=nft.contract_id%>" target="_blank"><i class="fas fa-globe-americas etherscan-icon"></i></a>
         <a href=<%=nft.collection.discord_url%> target="_blank"><i class="fab fa-discord discord-icon"></i></a>
       </div>
     </div>
-    <div class="col-7 pt-2">
-      <div class="d-flex justify-content-between my-auto">
-        <button type="button" class="btn text-light p-1" style="width: 47%; font-size: 0.5rem; background-color: rgb(52,92,159); border-radius: 12px;">
+    <div class="col-7">
+      <h4 class="text-center font-weight-bold"><%= nft.name %></h4>
+      <button type="button" class="btn mb-2 w-100 text-light" style="background-color:darkslateblue; border-radius: 12px; font-size: 1.25rem">Floor: <strong><%=nft.collection.floor_price%></strong> <i class="fab fa-ethereum"></i></button>
+    </div>
+  </div>
+  <div class="row mx-0" style="height: 20%" id="bottom row">
+
+    <div class="col-12 pt-2">
+      <div class="d-flex my-auto">
+        <button type="button" class="btn text-light p-1 mx-1 flex-grow-1" style="background-color: rgb(52,92,159); border-radius: 12px;">
         <% unless nft.last_sale_eth_price.nil? %>
-          <p class="mb-0">Last sale: <%= '%.2f' % (nft.last_sale_eth_price/10**18) %> <i class="fab fa-ethereum"></i></p>
+          <p class="mb-0 font-weight-bold">Last sale: <%= '%.2f' % (nft.last_sale_eth_price/10**18) %> <i class="fab fa-ethereum"></i></p>
         <% end %>
         </button>
-        <button type="button" class="btn text-light p-1" style="width: 47%; font-size: 0.5rem; background-color: rgb(52,92,159); border-radius: 12px;">
         <% unless nft.highest_bid_eth_price.nil? %>
-          <p class="mb-0">Highest bid: <%= '%.2f' % (nft.highest_bid_eth_price/10**18) %> <i class="fab fa-ethereum"></i></p>
-        <% end %>
+        <button type="button" class="btn text-light p-1 mx-1" style="width: 50%; background-color: rgb(52,92,159); border-radius: 12px;">
+          <p class="mb-0 font-weight-bold">Highest bid: <%= '%.2f' % (nft.highest_bid_eth_price/10**18) %> <i class="fab fa-ethereum"></i></p>
         </button>
+        <% end %>
       </div>
     </div>
   </div>
