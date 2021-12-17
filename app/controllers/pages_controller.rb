@@ -63,6 +63,7 @@ class PagesController < ApplicationController
     @nfts = Nft.first(5)
     @watchlist_nfts = Nft.last(5)
     @collections = Collection.first(5)
+    render layout: "no-container"
   end
 
   def add_collection_to_watchlist

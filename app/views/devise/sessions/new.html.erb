@@ -1,7 +1,7 @@
 <div class= "container">
   <div class = "row">
     <div class="devise col-6 mx-auto glass p-3" style="position: relative; top: 50%; transform: translateY(+30%);">
-      <h5>Login with Metamask</h2>
+      <h3 class="font-weight-bold">Login with Metamask</h3>
 
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <%= f.input :wallet_id,
@@ -14,7 +14,7 @@
           <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
 
         <div class="form-actions align-items-center">
-          <%= f.button :submit, "Login with Metamask", class: "glass" %> <%= render "devise/shared/links" %>
+          <%= f.button :submit, "Login with Metamask", class: "btn btn-success font-weight-bold" %> <%= render "devise/shared/links" %>
         </div>
       <% end %>
 

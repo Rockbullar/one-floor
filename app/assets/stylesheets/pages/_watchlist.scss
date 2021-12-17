@@ -1,9 +1,10 @@
 .add-button {
-  background-color: orange;
-  width: 15%;
+  background-color: $orange;
   transform: none;
+  font-weight: bold;
+  font-size: 2rem;
   border: 1px;
-  &:hover {
-    transform: scale(1.05)
-  }
+  // &:hover {
+  //   transform: scale(1.05)
+  // }
 }
