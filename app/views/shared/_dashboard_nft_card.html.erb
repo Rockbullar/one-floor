@@ -13,6 +13,7 @@
     <div class="col-7">
       <h4 class="text-center font-weight-bold"><%= nft.name %></h4>
       <button type="button" class="btn mb-2 w-100 text-light" style="background-color:darkslateblue; border-radius: 12px; font-size: 1.25rem">Floor: <strong><%=nft.collection.floor_price%></strong> <i class="fab fa-ethereum"></i></button>
+      <button type="button" class="btn mb-2 w-100 text-light" style="background-color:darkslateblue; border-radius: 12px; font-size: 1.25rem">24Hr Change: <strong><%= '%.2f' % (nft.collection.one_day_change) %>%</strong></button>
     </div>
   </div>
   <div class="row mx-0" style="height: 20%" id="bottom row">

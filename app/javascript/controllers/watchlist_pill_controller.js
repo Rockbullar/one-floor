@@ -13,7 +13,7 @@ export default class extends Controller {
   static targets = ["addbutton"]
 
   buttonnft() {
-    this.addbuttonTarget.innerHTML = 'Add Nft'
+    this.addbuttonTarget.innerHTML = 'Add NFT'
   }
   buttoncollection() {
     this.addbuttonTarget.innerHTML = 'Add Collection'

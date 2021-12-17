@@ -71,6 +71,8 @@ class PagesController < ApplicationController
     @collections = Collection.first(5).reject { |collection|
         collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners)
       }
+
+    render layout: "no-container"
   end
 
   def add_collection_to_watchlist

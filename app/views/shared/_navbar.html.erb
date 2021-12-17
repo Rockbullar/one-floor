@@ -22,11 +22,11 @@
       </li>
       <% if user_signed_in? %>
         <li class="nav-item mx-4" style="margin: 4px 0; border-radius: 22px;">
-          <button type="button" class="glass btn" style="padding: 0;">  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "glass nav-link text-white font-weight-bold", data: { turbolinks: false }%></button>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link text-white font-weight-bold bg-success", data: { turbolinks: false }%>
         </li>
       <% else %>
         <li class="nav-item mx-4" style="margin: 4px 0; border-radius: 22px;">
-          <button type="button" class="glass btn" style="padding: 0;">  <%= link_to "Connect Wallet", new_user_session_path, class: "glass nav-link text-white font-weight-bold", data: { turbolinks: false }%></button>
+          <%= link_to "Connect Wallet", new_user_session_path, class: "nav-link text-white font-weight-bold bg-success", data: { turbolinks: false }%>
         </li>
       <% end %>
     </ul>
