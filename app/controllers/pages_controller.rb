@@ -16,21 +16,15 @@ class PagesController < ApplicationController
     end
 
     if user_signed_in?
-      @nfts = current_user.nfts.reject{ |nft|
-        nft.image_url.nil? || nft.name.nil? || nft.highest_bid_eth_price.nil? }
+      @nfts = current_user.nfts
       @watchlist_nfts = current_user.watchlist_nfts.reverse
-      @collections = current_user.watchlist_collections.reverse.reject{ |collection|
-      collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners) }
+      @collections = current_user.watchlist_collections.reverse
     else
-      @nfts = Nft.first(10).reject{ |nft|
-        nft.image_url.nil? || nft.name.nil? || nft.highest_bid_eth_price.nil? }
-      @watchlist_nfts = Nft.last(10).reject{ |nft|
-        nft.image_url.nil? || nft.name.nil? || nft.highest_bid_eth_price.nil? }
-      @collections = Collection.first(5).reject
+      @nfts = Nft.first(10)
+      @watchlist_nfts = Nft.last(10)
+      @collections = Collection.first(5)
     end
-    @all_collections = Collection.all.reject  { |collection|
-        collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners)
-      }
+    @all_collections = Collection.all
     articles_service = Articles.new
     @articles = articles_service.call
     @slugs = Collection.all.map(&:slug)
@@ -68,10 +62,7 @@ class PagesController < ApplicationController
 
     @nfts = Nft.first(5)
     @watchlist_nfts = Nft.last(5)
-    @collections = Collection.first(5).reject { |collection|
-        collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners)
-      }
-
+    @collections = Collection.first(5)
     render layout: "no-container"
   end
 
@@ -104,9 +95,7 @@ class PagesController < ApplicationController
   end
 
   def update_search
-    @collections = Collection.where("slug ILIKE ?", "%#{params['query']}%").reject{ |collection|
-      collection.image_url.nil? || collection.name.nil? || collection.total_supply.nil? || collection.num_owners.nil? || (collection.total_supply < collection.num_owners)
-    }
+    @collections = Collection.where("slug ILIKE ?", "%#{params['query']}%")
     respond_to do |format|
       format.text { render partial: 'shared/dashboard_grouped_collection_cards', locals: { collections: @collections }, formats: [:html] }
     end
